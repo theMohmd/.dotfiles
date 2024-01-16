@@ -62,6 +62,50 @@ linkFn(){
     fi
 }
 
-$(linkFn "neovim" "nvim")
-$(linkFn "tmux" "tmux")
+#neovim
+read -p "Do you want neovim config? ($yes/$no): " answer
+if [[ "$answer" =~ ^[Yy]$ ]]; then
+    if [ -d "$HOME/.config/nvim" ]; then
+        read -p "What do you want to do with the existing config? ($backup/$cancel/$delete): " answer
+
+        if [[ "$answer" =~ ^[Dd]$ ]]; then
+            rm -rf $HOME/.config/nvim
+            ln -s $HOME/.dotfiles/nvim $HOME/.config/nvim
+
+        elif [[ "$answer" =~ ^[Bb]$ ]]; then
+            mv $HOME/.config/nvim $HOME/.config/nvim.bak
+            ln -s $HOME/.dotfiles/nvim $HOME/.config/nvim
+        fi
+    else
+        ln -s $HOME/.dotfiles/nvim $HOME/.config/nvim
+    fi 
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim\ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+fi
+
+
+#tmux
+read -p "Do you want tmux config? ($yes/$no): " answer
+if [[ "$answer" =~ ^[Yy]$ ]]; then
+    if [ -d "$HOME/.config/tmux" ]; then
+        read -p "What do you want to do with the existing config? ($backup/$cancel/$delete): " answer
+
+        if [[ "$answer" =~ ^[Dd]$ ]]; then
+            rm -rf $HOME/.config/tmux
+            ln -s $HOME/.dotfiles/tmux $HOME/.config/tmux
+
+        elif [[ "$answer" =~ ^[Bb]$ ]]; then
+            mv $HOME/.config/tmux $HOME/.config/$2.bak
+            ln -s $HOME/.dotfiles/tmux $HOME/.config/tmux
+        fi
+    else
+        ln -s $HOME/.dotfiles/tmux $HOME/.config/tmux
+    fi 
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm 
+fi
+
+read -p "Do you want cleanreact? ($yes/$no): " answer
+    if [[ "$answer" =~ ^[Yy]$ ]]; then
+        ln -s $HOME/.dotfiles/cleanreact /usr/local/bin
+    fi
+    
 $(linkFn "zsh" "zsh")

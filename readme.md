@@ -1,0 +1,1 @@
+:packersync in nvim 

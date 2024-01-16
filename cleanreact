@@ -1,0 +1,41 @@
+npm create vite@latest .
+
+rm src/assets/react.svg
+rm src/App.css
+
+echo "
+const App = () => {
+return (
+<div>App</div>
+)
+}
+export default App
+" > src/App.jsx
+
+read -p "tailwind? (y/n): " response
+
+if [ "$response" = "y" ] || [ "$response" = "Y" ]; then
+    npm install -D tailwindcss postcss autoprefixer
+    npx tailwindcss init -p
+
+    echo "@tailwind base;
+    @tailwind components;
+    @tailwind utilities;" > src/index.css
+
+    echo 'export default {
+    content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    ],
+    theme: {
+    extend: {},
+    },
+    plugins: [],
+    }' > tailwind.config.js 
+fi
+
+read -p "run dev? (y/n): " response
+
+if [ "$response" = "y" ] || [ "$response" = "Y" ]; then
+    npm run dev
+fi

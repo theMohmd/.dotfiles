@@ -14,7 +14,11 @@ alias zrc="$EDITOR $ZODTDIT/.zshrc"
 alias ll='ls -lah'
 alias zsource="source $ZDOTDIR/.zshrc"
 alias shut="shutdown now"
- 
+alias pm="sudo pacman -S"
+alias dad="cd /run/media/DaDisk"
+#alias caps="setxkbmap -option caps:escape,shift:both_capslock &"
+alias caps="xmodmap -e 'keycode 9 = Caps_Lock' -e 'clear Lock' -e 'keycode 0x42 = Escape'"      
+
 #############
 # Functions #
 #############
@@ -84,12 +88,15 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=249'
 
 # case insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-xmodmap -e 'keycode 9 = Caps_Lock' -e 'clear Lock' -e 'keycode 0x42 = Escape'
+
+# swap escape and caps lock
+#xmodmap -e 'keycode 9 = Caps_Lock' -e 'clear Lock' -e 'keycode 0x42 = Escape'
+
 #######################
 # Prompt              #
 #######################
 
-# indicate vim mode
+# show vim mode
 mode=""
 function zle-line-init zle-keymap-select {
     mode="%F{black}%B%K{69}"
