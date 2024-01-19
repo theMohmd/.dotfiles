@@ -49,7 +49,7 @@ return require('packer').startup(function(use)
             "nvim-lua/plenary.nvim",
             "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
             "MunifTanjim/nui.nvim",
-            -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+             "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
             {
                 's1n7ax/nvim-window-picker',
                 version = '2.*',
@@ -82,9 +82,9 @@ return require('packer').startup(function(use)
             {text = "󰌵", texthl = "DiagnosticSignHint"})
 
 
-    vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
-end
-}
+            vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
+        end
+    }
     --my choice
     use ('christoomey/vim-tmux-navigator')
     use ('lambdalisue/suda.vim')

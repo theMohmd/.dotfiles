@@ -30,6 +30,14 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.ignorecase = true
--------------------------------------------------netrw
+
+vim.opt.list = true
+vim.opt.listchars = {
+    multispace = '---^',
+    trail = '~',
+    extends = '>',
+    precedes = '<',
+}
+---------------------------------netrw
 
 vim.g.netrw_banner = 0

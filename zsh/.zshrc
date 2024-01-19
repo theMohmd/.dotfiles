@@ -1,11 +1,12 @@
 #########################
 # Environment variables #
 #########################
- 
+
 export EDITOR=nvim
 export VISUAL=nvim
- 
- 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 ###########
 # Aliases #
 ###########
@@ -43,14 +44,14 @@ zPlug()
 ##########################
 # Keybind mode for shell #
 ##########################
- 
+
 # For vi keybinding
 bindkey -v
- 
+
 #######################
 # Command-line editor #
 #######################
- 
+
 # Uses $VISUAL editor
 autoload -z edit-command-line
 zle -N edit-command-line
@@ -99,15 +100,14 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 # show vim mode
 mode=""
 function zle-line-init zle-keymap-select {
-    mode="%F{black}%B%K{69}"
+    mode="%F{227}"
     if [[ $KEYMAP == 'vicmd' ]]; then
-        mode+=" ⌨ "
+        mode+="%K{197}%k%f%F{black}%B%K{197} N %f%b%k%F{197}%f"
     elif [[ $KEYMAP == 'main' ]]; then
-        mode+=""
+        mode+="%K{69}%k%f%F{black}%B%K{69} I %f%b%k%F{69}%f"
     else
         mode+="[$KEYMAP]"
     fi
-    mode+="%f%b%k"
     zle reset-prompt
 }
 zle -N zle-line-init
@@ -116,10 +116,8 @@ zle -N zle-keymap-select
 
 setopt PROMPT_SUBST
 dir="%K{227}%F{black}%B %c %b%f%k"
-d1="%F{227}%K{69}%k%f"
-d3="%F{69}%f"
 PROMPT='
-%F{227}╭─%f$dir$d1$mode$d3
+%F{227}╭─%f$dir$mode
 %F{227}╰─⏵%f '
 #######################
 # Plugins             #
