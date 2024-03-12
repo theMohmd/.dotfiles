@@ -4,18 +4,24 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-    -- Packer can manage itself
-
+    -- to manage itself
     use 'wbthomason/packer.nvim'
+    -- hop between files
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.2',
-        requires = { {'nvim-lua/plenary.nvim'} }
+        'nvim-telescope/telescope.nvim',
+        tag = '0.1.2',
+        requires = 'nvim-lua/plenary.nvim',
+        run = ':!sudo pacman -S ripgrep'
     }
-    use ('theprimeagen/harpoon')
-    use ('nvim-treesitter/nvim-treesitter',{run= ':TSUpdate'})
-    use ('mbbill/undotree')
-    use ('tpope/vim-fugitive')
-
+    -- hop faster between files
+    use {'theprimeagen/harpoon'}
+    -- treesitter
+    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+    -- undotree
+    use {'mbbill/undotree'}
+    -- manage git
+    use {'tpope/vim-fugitive'}
+    --lsp
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
@@ -24,6 +30,7 @@ return require('packer').startup(function(use)
             {'neovim/nvim-lspconfig'},             -- Required
             {'williamboman/mason.nvim'},           -- Optional
             {'williamboman/mason-lspconfig.nvim'}, -- Optional
+            { 'glepnir/lspsaga.nvim'},             -- float diagnostic
 
             -- Autocompletion
             {'hrsh7th/nvim-cmp'},     -- Required
@@ -32,66 +39,42 @@ return require('packer').startup(function(use)
             {'L3MON4D3/LuaSnip'},     -- Required
         }
     }
-    --theme
+    --status line theme
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-    }   
+    }
+    --theme
     use ('Mofiqul/dracula.nvim')
-    use ('fneu/breezy')
-    use ("folke/tokyonight.nvim")
-    use ('projekt0n/github-nvim-theme')
-    use { "catppuccin/nvim", as = "catppuccin" }
+    use {"folke/tokyonight.nvim"}
+    use {'projekt0n/github-nvim-theme'}
+    --use { "catppuccin/nvim", as = "catppuccin" }
+
+    --project tree view
     use {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v3.x",
-        requires = { 
+        requires = {
             "nvim-lua/plenary.nvim",
             "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
             "MunifTanjim/nui.nvim",
              "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
             {
                 's1n7ax/nvim-window-picker',
-                version = '2.*',
-                config = function()
-                    require 'window-picker'.setup({
-                        filter_rules = {
-                            include_current_win = false,
-                            autoselect_one = true,
-                            -- filter using buffer options
-                            bo = {
-                                -- if the file type is one of following, the window will be ignored
-                                filetype = { 'neo-tree', "neo-tree-popup", "notify" },
-                                -- if the buffer type is one of following, the window will be ignored
-                                buftype = { 'terminal', "quickfix" },
-                            },
-                        },
-                    })
-                end,
+                version = '2.*'
             },
-        },
-        config = function ()
-            -- If you want icons for diagnostic errors, you'll need to define them somewhere:
-            vim.fn.sign_define("DiagnosticSignError",
-            {text = " ", texthl = "DiagnosticSignError"})
-            vim.fn.sign_define("DiagnosticSignWarn",
-            {text = " ", texthl = "DiagnosticSignWarn"})
-            vim.fn.sign_define("DiagnosticSignInfo",
-            {text = " ", texthl = "DiagnosticSignInfo"})
-            vim.fn.sign_define("DiagnosticSignHint",
-            {text = "󰌵", texthl = "DiagnosticSignHint"})
-
-
-            vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
-        end
+        }
     }
-    --my choice
-    use ('christoomey/vim-tmux-navigator')
-    use ('lambdalisue/suda.vim')
-    use ('rafamadriz/friendly-snippets')
-    use ('saadparwaiz1/cmp_luasnip')
-    use ('AndrewRadev/tagalong.vim')
-    --web dev stuff
-    use ('prettier/vim-prettier', {run= ':!yarn install --frozen-lockfile --production' })
+    -- C-hjkl tab navigation
+    use {'christoomey/vim-tmux-navigator'}
+    -- sudo read and write
+    use {'lambdalisue/suda.vim'}
+    -- usefull snippets
+    use {'rafamadriz/friendly-snippets'}
+    use {'saadparwaiz1/cmp_luasnip'}
+    -- html tag rename
+    use {'AndrewRadev/tagalong.vim'}
+    -- prettier
+    use {'prettier/vim-prettier', run = ':!yarn install --frozen-lockfile --production' }
 end)
 

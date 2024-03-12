@@ -7,6 +7,11 @@ fi
 rm src/assets/react.svg
 rm src/App.css
 
+mkdir /src/components/ui
+mkdir /src/hooks
+mkdir /src/api
+mkdir /src/pages
+
 read -p "tsx or jsx? " response
 
 if [ "$response" = "jsx" ] ]; then

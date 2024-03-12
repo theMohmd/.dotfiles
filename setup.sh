@@ -108,5 +108,5 @@ read -p "Do you want cleanreact? ($yes/$no): " answer
     if [[ "$answer" =~ ^[Yy]$ ]]; then
         ln -s $HOME/.dotfiles/cleanreact /usr/local/bin
     fi
-    
+sudo pacman -S ripgrep
 $(linkFn "zsh" "zsh")

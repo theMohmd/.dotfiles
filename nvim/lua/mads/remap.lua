@@ -12,7 +12,6 @@ vim.keymap.set("n", "<leader>0", function()
     vim.cmd('50 vsplit')
     vim.cmd('e ~/myNvimCheatSheat.txt')
 end)
-vim.keymap.set("n", "<leader>E", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>L", function()
     vim.cmd('tabnew')
     vim.cmd('e ~/.config/nvim')
@@ -43,7 +42,7 @@ vim.keymap.set("n", "<leader>b", "<c-^>")
 vim.keymap.set("n", "<leader>d", "yyp")
 
 --file explorer
-vim.keymap.set("n", "<leader>e", function() vim.cmd('e .') end)
+    --vim.keymap.set("n", "<leader>e", function() vim.cmd('e .') end)
 
 --undo redo
 vim.keymap.set("n", "U", "<c-r>")
