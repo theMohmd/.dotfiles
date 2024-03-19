@@ -1,9 +1,10 @@
+
 require("neo-tree").setup({
-    close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
+    close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
     popup_border_style = "rounded",
     enable_git_status = true,
     enable_diagnostics = true,
-    enable_normal_mode_for_inputs = false, -- Enable normal mode for input dialogs.
+    enable_normal_mode_for_inputs = true, -- Enable normal mode for input dialogs.
     open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
     sort_case_insensitive = false, -- used when sorting files and directories in the tree
     sort_function = nil , -- use a custom function for sorting files and directories in the tree 
@@ -98,8 +99,8 @@ require("neo-tree").setup({
             nowait = true,
         },
         mappings = {
-            ["<space>"] = { 
-                "toggle_node", 
+            ["<space>"] = {
+                "toggle_node",
                 nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use 
             },
             ["<2-LeftMouse>"] = "open",
@@ -121,7 +122,7 @@ require("neo-tree").setup({
             -- ['C'] = 'close_all_subnodes',
             ["z"] = "close_all_nodes",
             --["Z"] = "expand_all_nodes",
-            ["a"] = { 
+            ["a"] = {
                 "add",
                 -- this command supports BASH style brace expansion ("x{a,b,c}" -> xa,xb,xc). see `:h neo-tree-file-actions` for details
                 -- some commands may take optional config options, see `:h neo-tree-mappings` for details
@@ -142,15 +143,22 @@ require("neo-tree").setup({
                     --    show_path = "none" -- "none", "relative", "absolute"
                     --  }
                     --}
-                    ["m"] = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
-                    ["q"] = "close_window",
-                    ["R"] = "refresh",
-                    ["?"] = "show_help",
-                    ["<"] = "prev_source",
-                    [">"] = "next_source",
-                    ["i"] = "show_file_details",
-                }
-            },
+            ["m"] = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
+            ["q"] = "close_window",
+            ["R"] = "refresh",
+            ["?"] = "show_help",
+            ["<"] = "prev_source",
+            [">"] = "next_source",
+            ["i"] = "show_file_details",
+            ["gA"]  = "git_add_all",
+            ["gu"] = "git_unstage_file",
+            ["ga"] = "git_add_file",
+            ["gr"] = "git_revert_file",
+            ["gc"] = "git_commit",
+            ["gp"] = "git_push",
+            ["gg"] = "git_commit_and_push",
+        }
+    },
                 nesting_rules = {},
                 filesystem = {
                     filtered_items = {
@@ -166,7 +174,7 @@ require("neo-tree").setup({
                         --"*/src/*/tsconfig.json",
                     },
                     always_show = { -- remains visible even if other settings would normally hide it
-                    --".gitignored",
+                    ".gitignored",
                 },
                 never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
                 --".DS_Store",
@@ -248,7 +256,7 @@ commands = {} -- Add a custom command or override a global one using the same fu
             window = {
                 position = "float",
                 mappings = {
-                    ["A"]  = "git_add_all",
+                    ["gA"]  = "git_add_all",
                     ["gu"] = "git_unstage_file",
                     ["ga"] = "git_add_file",
                     ["gr"] = "git_revert_file",
