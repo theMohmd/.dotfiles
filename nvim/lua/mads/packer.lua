@@ -45,6 +45,7 @@ return require('packer').startup(function(use)
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
     --theme
+    use ('marko-cerovac/material.nvim')
     use ('Mofiqul/dracula.nvim')
     use {"folke/tokyonight.nvim"}
     use {'projekt0n/github-nvim-theme'}
@@ -63,6 +64,18 @@ return require('packer').startup(function(use)
                 's1n7ax/nvim-window-picker',
                 version = '2.*'
             },
+        }
+    }
+    -- better command ui
+    use{
+        "folke/noice.nvim",
+        requires = {
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            "MunifTanjim/nui.nvim",
+            -- OPTIONAL:
+            --   `nvim-notify` is only needed, if you want to use the notification view.
+            --   If not available, we use `mini` as the fallback
+            "rcarriga/nvim-notify",
         }
     }
     -- C-hjkl tab navigation

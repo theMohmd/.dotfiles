@@ -1,7 +1,7 @@
 function StringToLiteral()
-    vim.cmd([[normal! ea ${} ]])
-    vim.cmd([[normal! "5di"xs{``}]])
-    vim.cmd([[normal! h"5P]])
+    vim.cmd([[normal! Ea ${} ]])
+    vim.cmd([[normal! 0f"s{`]])
+    vim.cmd([[normal! $F"s`}]])
     vim.cmd([[normal! 0f$2l]])
     vim.cmd('startinsert')
 end
