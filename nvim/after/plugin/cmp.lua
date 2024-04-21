@@ -11,10 +11,12 @@ cmp.setup({
         -- completion = cmp.config.window.bordered(),
         -- documentation = cmp.config.window.bordered(),
     },
+
+
     mapping = {
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        --['<cr>'] = cmp.mapping.complete(),
+        ['<C-l>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
         ['<Tab>'] = cmp.mapping(function()
             --undo point

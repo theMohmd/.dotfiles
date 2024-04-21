@@ -104,9 +104,13 @@ if [[ "$answer" =~ ^[Yy]$ ]]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm 
 fi
 
+read -p "Do you want nextCleanUp? ($yes/$no): " answer
+    if [[ "$answer" =~ ^[Yy]$ ]]; then
+        ln -s $HOME/.dotfiles/scripts/nextCleanUp /usr/local/bin
+    fi
 read -p "Do you want cleanreact? ($yes/$no): " answer
     if [[ "$answer" =~ ^[Yy]$ ]]; then
-        ln -s $HOME/.dotfiles/cleanreact /usr/local/bin
+        ln -s $HOME/.dotfiles/scripts/cleanreact /usr/local/bin
     fi
 sudo pacman -S ripgrep
 $(linkFn "zsh" "zsh")

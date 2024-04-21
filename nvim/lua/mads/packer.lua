@@ -46,10 +46,12 @@ return require('packer').startup(function(use)
     }
     --theme
     use ('marko-cerovac/material.nvim')
-    use ('Mofiqul/dracula.nvim')
-    use {"folke/tokyonight.nvim"}
+    use ('eldritch-theme/eldritch.nvim')
+    use ('EdenEast/nightfox.nvim')
     use {'projekt0n/github-nvim-theme'}
-    --use { "catppuccin/nvim", as = "catppuccin" }
+    use {'loctvl842/monokai-pro.nvim'}
+    use {'bluz71/vim-moonfly-colors', as = 'moonfly' }
+    use {"catppuccin/nvim", as = "catppuccin" }
 
     --project tree view
     use {
@@ -89,5 +91,9 @@ return require('packer').startup(function(use)
     use {'AndrewRadev/tagalong.vim'}
     -- prettier
     use {'prettier/vim-prettier', run = ':!yarn install --frozen-lockfile --production' }
+    -- commenting
+    use {'numToStr/Comment.nvim'}
+    -- blade
+    use { 'jwalton512/vim-blade'}
 end)
 

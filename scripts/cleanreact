@@ -7,14 +7,15 @@ fi
 rm src/assets/react.svg
 rm src/App.css
 
-mkdir /src/components/ui
-mkdir /src/hooks
-mkdir /src/api
-mkdir /src/pages
+mkdir src/components
+mkdir src/components/ui
+mkdir src/hooks
+mkdir src/api
+mkdir src/pages
 
-read -p "tsx or jsx? " response
+read -p "(t/j)sx? " response
 
-if [ "$response" = "jsx" ] ]; then
+if [ "$response" = "j"  ]; then
     echo "
     const App = () => {
         return (
@@ -24,7 +25,7 @@ if [ "$response" = "jsx" ] ]; then
     export default App
     " > src/App.jsx
 fi
-if [ "$response" = "tsx" ] ]; then
+if [ "$response" = "t"  ]; then
     echo "
     const App = () => {
         return (
@@ -35,11 +36,12 @@ if [ "$response" = "tsx" ] ]; then
     " > src/App.tsx
 fi
 
+
 read -p "tailwind? (y/n): " response
 
 if [ "$response" = "y" ] || [ "$response" = "Y" ]; then
     npm install -D tailwindcss postcss autoprefixer
-    npx tailwindcss init -p
+    npx tailwindcss init -p --ts
 
     echo "@tailwind base;
     @tailwind components;

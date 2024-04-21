@@ -1,8 +1,9 @@
 function Color(color)
-    color = color or "material-deep-ocean"
+    color = color or "duskfox"
     vim.cmd.colorscheme(color)
-    vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
+    --vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
 end
+vim.g.moonflyWinSeparator = 0
 
 Color()
 
