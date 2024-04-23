@@ -94,7 +94,11 @@ vim.keymap.set("n", "J", "mzJ`z")
 --quick fix
 vim.keymap.set("n", "[[", vim.cmd.cn)
 vim.keymap.set("n", "]]", vim.cmd.cp)
+vim.keymap.set("n", "[]", vim.cmd.copen)
+vim.keymap.set("n", "][", vim.cmd.cclose)
 
+--tab
+vim.keymap.set("n", "<leader>t", vim.cmd.tabn)
 
 
 --comment
