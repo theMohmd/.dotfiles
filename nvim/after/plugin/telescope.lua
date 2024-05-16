@@ -21,3 +21,4 @@ local function conditional_telescope()
 end
 
 vim.keymap.set('n', '<leader>f', conditional_telescope, {})
+vim.keymap.set('n', '<leader>F', function() builtin.find_files()end, {})

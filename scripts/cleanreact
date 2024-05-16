@@ -12,6 +12,8 @@ mkdir src/components/ui
 mkdir src/hooks
 mkdir src/api
 mkdir src/pages
+mkdir src/contexts
+
 
 read -p "(t/j)sx? " response
 
@@ -24,6 +26,18 @@ if [ "$response" = "j"  ]; then
     }
     export default App
     " > src/App.jsx
+
+    touch src/contexts/Providers.jsx
+    echo "
+    import { ReactNode } from "react";
+
+    //Providers component for setting all the Providers for project in one seperate file
+    const Providers = ({ children }) => {
+        return <>{children}</>;
+    };
+
+    export default Providers;
+    " > src/contexts/Providers.jsx
 fi
 if [ "$response" = "t"  ]; then
     echo "
@@ -34,6 +48,21 @@ if [ "$response" = "t"  ]; then
     }
     export default App
     " > src/App.tsx
+
+    touch src/contexts/Providers.tsx
+    echo "
+    import { ReactNode } from "react";
+
+    //Providers component for setting all the Providers for project in one seperate file
+    type ProvidersProps = {
+        children: ReactNode;
+    };
+    const Providers = ({ children }: ProvidersProps) => {
+        return <>{children}</>;
+    };
+
+    export default Providers;
+    " > src/contexts/Providers.tsx
 fi
 
 
@@ -47,20 +76,30 @@ if [ "$response" = "y" ] || [ "$response" = "Y" ]; then
     @tailwind components;
     @tailwind utilities;" > src/index.css
 
-    echo 'export default {
+    echo'
+    import type { Config } from 'tailwindcss'
+
+    export default {
     content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+                 "./index.html",
+                 "./src/**/*.{js,ts,jsx,tsx}",
     ],
     theme: {
     extend: {},
     },
     plugins: [],
-    }' > tailwind.config.js 
+        } satisfies Config
+
+    '> tailwind.config.ts
+fi
+
+read -p "router? (y/n): " response
+if [ "$response" = "y" ] || [ "$response" = "Y" ]; then
+    npm i react-router-dom
+
 fi
 
 read -p "run dev? (y/n): " response
-
 if [ "$response" = "y" ] || [ "$response" = "Y" ]; then
     npm run dev
 fi

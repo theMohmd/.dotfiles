@@ -30,6 +30,7 @@ vim.keymap.set({ "n", "v" }, "<leader>Y", [["+Y]])
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]])
 vim.keymap.set({ "n", "v" }, "<leader>P", [["+P]])
+vim.keymap.set({ "n", "v" }, "<leader>d", [["+d]])
 
 --deletion
 --vim.keymap.set({"n", "v"}, "D" ,[[d]])
@@ -40,7 +41,7 @@ vim.keymap.set({ "n", "v" }, "<leader>P", [["+P]])
 vim.keymap.set("n", "<leader>b", "<c-^>")
 
 --duplicate line
-vim.keymap.set("n", "<leader>d", "yyp")
+vim.keymap.set("n", "<leader>l", "yyp")
 
 --file explorer
 --vim.keymap.set("n", "<leader>e", function() vim.cmd('e .') end)
@@ -56,6 +57,7 @@ vim.keymap.set("n", "<leader>o", "o<esc>")
 vim.keymap.set("n", "<leader>O", "O<esc>")
 
 --replace word
+vim.keymap.set("n", "<leader>s", [[:%s//gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>sa", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gIc<Left><Left><Left><Left>]])
 vim.keymap.set("n", "<leader>sl", [[:s/\<<C-r><C-w>\>//gI<Left><Left><Left>]])
 
@@ -64,7 +66,10 @@ vim.keymap.set("n", "<leader>;", function()
     vim.cmd('w')
     vim.cmd('PrettierAsync')
 end)
-vim.keymap.set("n", "<leader>:", "<cmd>silent !rustywind --write %<cr>")
+vim.keymap.set("n", "<leader>:", function()
+    vim.cmd('w')
+    vim.cmd("silent !rustywind --write %<cr>")
+end)
 
 --move in insert mode
 vim.keymap.set("i", "<A-l>", "<C-o>l")
@@ -79,7 +84,7 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 --better end of line
-vim.keymap.set("n", "-", "$")
+--vim.keymap.set("n", "-", "$")
 
 --dont ask
 --vim.keymap.set("n", "Q", "<nop>")
@@ -104,3 +109,7 @@ vim.keymap.set("n", "<leader>t", vim.cmd.tabn)
 --comment
 vim.keymap.set("n", "<leader>c", "I{/*<esc>A*/}<esc>")
 --vim.keymap.set("i", "<c-d>", "<cr><c-o>k<c-o>$")
+
+--impor
+vim.keymap.set("n", "<leader>i", "ea<c-l><tab><esc>")
+

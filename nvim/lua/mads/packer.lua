@@ -95,5 +95,7 @@ return require('packer').startup(function(use)
     use {'numToStr/Comment.nvim'}
     -- blade
     use { 'jwalton512/vim-blade'}
+    -- string/template converter
+    use { 'axelvc/template-string.nvim'}
 end)
 

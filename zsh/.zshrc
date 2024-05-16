@@ -19,6 +19,7 @@ alias pm="sudo pacman -S"
 alias dad="cd /run/media/DaDisk"
 #alias caps="setxkbmap -option caps:escape,shift:both_capslock &"
 alias caps="xmodmap -e 'keycode 9 = Caps_Lock' -e 'clear Lock' -e 'keycode 0x42 = Escape'"      
+alias pubip="curl ipinfo.io"
 
 #############
 # Functions #

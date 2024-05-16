@@ -13,11 +13,16 @@ local function copy(args)
     return args[1]
 end
 
+-- Function to get the folder name of the current file
+local function get_folder_name()
+    local current_file = vim.fn.expand('%') -- Get the full path of the current file
+    local parent_directory_name = current_file:match(".-([^/]+)/[^/]*$")
+    return parent_directory_name or "Unknown"
+   end
 -- Function to get the base name of the current file
 local function get_file_name()
     local full_path = vim.fn.expand('%:t') -- Get the file name including extension
     local name_without_extension = full_path:gsub("%..+$", "") -- Remove the extension
-    print(name_without_extension)
     return name_without_extension
 
 end
@@ -65,7 +70,135 @@ ls.add_snippets("typescriptreact", {
                 fileName = f(get_file_name),
             }
         )
-    )
+    ),
+    s( "slp",--sleep 
+    {
+        t("await new Promise(e=>setTimeout(e,"),
+        i(1,"4000"),
+        t(")) //sleep"),
+        i(0),
+    }),
+    s( "t",
+    {
+        t("t(\""),
+        f(get_folder_name),
+        t("."),
+        i(1),
+        t("\")"),
+        i(0),
+    }),
+})
+ls.add_snippets("typescript", {
+    s( "xget",--get api with axios
+        fmt([[
+        import axios from "axios";
+
+        //get {parentDir} {finish}
+        export type {fileName}InputType = {{ {1} }}
+        export type {fileName}OutputType = {2}
+
+        export const {fileName}
+        : ( input: {fileName}InputType ) => Promise<{fileName}OutputType>
+        = async (input) => {{
+            return axios
+            .get("http://127.0.0.1:{3}/api/{parentDir}",
+                {{
+                    params:{{{4}}},
+                    headers:{{
+                        "Content-Type": "application/json",
+                        Accept: "application/json",
+                        Authorization: "Bearer " + getCookie("token"),
+                }},
+            }})
+            .then(res=>res.data)
+        }}
+
+        ]],{
+            i(1),
+            i(2),
+            i(3),
+            i(4),
+            fileName = f(get_file_name),
+            parentDir = f(get_folder_name),
+            finish =i(0),
+        })
+    ),
+    s( "xdel",--delete api with axios
+        fmt([[
+        import axios from "axios";
+
+        //delete {parentDir} {finish}
+        export type {fileName}InputType = {{ id:number;{1} }}
+        export type {fileName}OutputType = {2}
+
+        export const {fileName}
+        : ( input: {fileName}InputType ) => Promise<{fileName}OutputType>
+        = async (input) => {{
+            return axios
+            .delete("http://127.0.0.1:{3}/api/{parentDir}/${{input.id}}",
+                {{
+                    headers:{{
+                        "Content-Type": "application/json",
+                        Accept: "application/json",
+                        Authorization: "Bearer " + getCookie("token"),
+                }},
+            }})
+            .then(res=>res.data)
+        }}
+
+        ]],{
+            i(1),
+            i(2),
+            i(3),
+            fileName = f(get_file_name),
+            parentDir = f(get_folder_name),
+            finish =i(0),
+        })
+    ),
+
+    s( "xpost",--post api with axios
+        fmt([[
+        import axios from "axios";
+
+        //post {parentDir} {finish}
+        export type {fileName}InputType = {{ {1} }}
+        export type {fileName}OutputType = {2}
+
+        export const {fileName}
+        : ( input: {fileName}InputType ) => Promise<{fileName}OutputType>
+        = async (input) => {{
+            return axios
+            .post("http://127.0.0.1:{3}/api/{parentDir}",
+                input,
+                {{
+                    params:{{{4}}},
+                    headers:{{
+                        "Content-Type": "application/json",
+                        Accept: "application/json",
+                        Authorization: "Bearer " + getCookie("token"),
+                }},
+            }})
+            .then(res=>res.data)
+        }}
+
+        ]],{
+            i(1),
+            i(2),
+            i(3),
+            i(4),
+            fileName = f(get_file_name),
+            parentDir = f(get_folder_name),
+            finish =i(0),
+        })
+    ),
+
+    s( "slp",--sleep 
+    {
+        t("await new Promise(e=>setTimeout(e,"),
+        i(1,"4000"),
+        t(")) //sleep"),
+        i(0),
+    }),
 })
 ls.add_snippets("lua",{
     s("class", {
