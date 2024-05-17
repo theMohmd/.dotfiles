@@ -99,15 +99,14 @@ ls.add_snippets("typescript", {
 
         export const {fileName}
         : ( input: {fileName}InputType ) => Promise<{fileName}OutputType>
-        = async (input) => {{
+        = async ( input ) => {{
             return axios
-            .get("http://127.0.0.1:{3}/api/{parentDir}",
-                {{
-                    params:{{{4}}},
-                    headers:{{
-                        "Content-Type": "application/json",
-                        Accept: "application/json",
-                        Authorization: "Bearer " + getCookie("token"),
+            .get("http://127.0.0.1:{3}/api/{parentDir}", {{
+                params:{{{4}}},
+                headers:{{
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                    Authorization: "Bearer " + getCookie("token"),
                 }},
             }})
             .then(res=>res.data)
@@ -133,14 +132,13 @@ ls.add_snippets("typescript", {
 
         export const {fileName}
         : ( input: {fileName}InputType ) => Promise<{fileName}OutputType>
-        = async (input) => {{
+        = async ( input ) => {{
             return axios
-            .delete("http://127.0.0.1:{3}/api/{parentDir}/${{input.id}}",
-                {{
-                    headers:{{
-                        "Content-Type": "application/json",
-                        Accept: "application/json",
-                        Authorization: "Bearer " + getCookie("token"),
+            .delete(`http://127.0.0.1:{3}/api/{parentDir}/${{input.id}}`, {{
+                headers:{{
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                    Authorization: "Bearer " + getCookie("token"),
                 }},
             }})
             .then(res=>res.data)
@@ -166,16 +164,13 @@ ls.add_snippets("typescript", {
 
         export const {fileName}
         : ( input: {fileName}InputType ) => Promise<{fileName}OutputType>
-        = async (input) => {{
+        = async ( input ) => {{
             return axios
-            .post("http://127.0.0.1:{3}/api/{parentDir}",
-                input,
-                {{
-                    params:{{{4}}},
-                    headers:{{
-                        "Content-Type": "application/json",
-                        Accept: "application/json",
-                        Authorization: "Bearer " + getCookie("token"),
+            .post("http://127.0.0.1:{3}/api/{parentDir}", input, {{
+                headers:{{
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                    Authorization: "Bearer " + getCookie("token"),
                 }},
             }})
             .then(res=>res.data)
@@ -185,7 +180,6 @@ ls.add_snippets("typescript", {
             i(1),
             i(2),
             i(3),
-            i(4),
             fileName = f(get_file_name),
             parentDir = f(get_folder_name),
             finish =i(0),

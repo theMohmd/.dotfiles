@@ -106,11 +106,11 @@ fi
 
 read -p "Do you want nextCleanUp? ($yes/$no): " answer
     if [[ "$answer" =~ ^[Yy]$ ]]; then
-        sudo ln -s $HOME/.dotfiles/scripts/nextCleanUp /usr/local/bin
+        sudo ln -s $HOME/.dotfiles/scripts/nextCleanUp.sh /usr/local/bin/nextCleanUp
     fi
 read -p "Do you want cleanreact? ($yes/$no): " answer
     if [[ "$answer" =~ ^[Yy]$ ]]; then
-        sudo ln -s $HOME/.dotfiles/scripts/cleanreact /usr/local/bin
+        sudo ln -s $HOME/.dotfiles/scripts/cleanreact.sh /usr/local/bin/cleanreact
     fi
 
 read -p "Do you want grep? ($yes/$no): " answer

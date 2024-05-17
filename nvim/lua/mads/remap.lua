@@ -66,10 +66,9 @@ vim.keymap.set("n", "<leader>;", function()
     vim.cmd('w')
     vim.cmd('PrettierAsync')
 end)
-vim.keymap.set("n", "<leader>:", function()
-    vim.cmd('w')
-    vim.cmd("silent !rustywind --write %<cr>")
+vim.keymap.set("n", "<leader>4", function()
 end)
+vim.keymap.set("n", "<leader>:", [[:w<cr>:silent !rustywind --write %<cr>]])
 
 --move in insert mode
 vim.keymap.set("i", "<A-l>", "<C-o>l")
@@ -107,7 +106,7 @@ vim.keymap.set("n", "<leader>t", vim.cmd.tabn)
 
 
 --comment
-vim.keymap.set("n", "<leader>c", "I{/*<esc>A*/}<esc>")
+vim.keymap.set("n", "<leader>c", "I{/<esc>78a*<esc>a<cr><esc>o*<esc>77i*<esc>ea/}<esc>")
 --vim.keymap.set("i", "<c-d>", "<cr><c-o>k<c-o>$")
 
 --impor
