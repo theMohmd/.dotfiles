@@ -191,3 +191,7 @@ return <>${var}</>;
 
 export default Providers;"
 > src/contexts/Providers.${variant}sx
+
+git init
+git add .
+git commit -m "initial commit"

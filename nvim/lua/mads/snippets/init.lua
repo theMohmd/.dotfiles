@@ -153,6 +153,41 @@ ls.add_snippets("typescript", {
             finish =i(0),
         })
     ),
+    s( "xfile", {--fileName
+        f(get_file_name),
+    }),
+
+    s( "xpatch",--patch api with axios
+        fmt([[
+        import axios from "axios";
+
+        //patch {parentDir} {finish}
+        export type {fileName}InputType = {{ {1} }}
+        export type {fileName}OutputType = {2}
+
+        export const {fileName}
+        : ( input: {fileName}InputType ) => Promise<{fileName}OutputType>
+        = async ( input ) => {{
+            return axios
+            .post("http://127.0.0.1:{3}/api/{parentDir}", input, {{
+                headers:{{
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                    Authorization: "Bearer " + getCookie("token"),
+                }},
+            }})
+            .then(res=>res.data)
+        }}
+
+        ]],{
+            i(1),
+            i(2),
+            i(3),
+            fileName = f(get_file_name),
+            parentDir = f(get_folder_name),
+            finish =i(0),
+        })
+    ),
 
     s( "xpost",--post api with axios
         fmt([[

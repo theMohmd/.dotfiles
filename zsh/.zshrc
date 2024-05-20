@@ -19,7 +19,8 @@ alias pm="sudo pacman -S"
 alias dad="cd /run/media/DaDisk"
 #alias caps="setxkbmap -option caps:escape,shift:both_capslock &"
 alias caps="xmodmap -e 'keycode 9 = Caps_Lock' -e 'clear Lock' -e 'keycode 0x42 = Escape'"      
-alias pubip="curl ipinfo.io"
+alias myip="curl ipinfo.io"
+alias cdd='cd && cd'
 
 #############
 # Functions #
@@ -97,11 +98,22 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 #######################
 # Prompt              #
 #######################
+#colors: https://www.hackitu.de/termcolor256/
+function git_branch_name()
+{
+  branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
+  if [[ $branch == "" ]];
+  then
+    echo "%F{227}"
+  else
+    echo "%F{227}%K{047}%k%f%F{black}%K{084}  $branch %k%f%F{047}"
+  fi
+}
 
 # show vim mode
 mode=""
 function zle-line-init zle-keymap-select {
-    mode="%F{227}"
+    mode="" #prev background
     if [[ $KEYMAP == 'vicmd' ]]; then
         mode+="%K{197}%k%f%F{black}%B%K{197} N %f%b%k%F{197}%f"
     elif [[ $KEYMAP == 'main' ]]; then
@@ -114,12 +126,28 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
-
 setopt PROMPT_SUBST
-dir="%K{227}%F{black}%B %c %b%f%k"
+dir="%K{227}%F{black}%B  %c %b%f%k"
 PROMPT='
-%F{227}╭─%f$dir$mode
+%F{227}╭─%f$dir$(git_branch_name)$mode
 %F{227}╰─⏵%f '
+#######################
+#function git_branch_name()
+#{
+#  branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
+#  if [[ $branch == "" ]];
+#  then
+#    :
+#  else
+#    echo '- ('$branch')'
+#  fi
+#}
+#
+## Enable substitution in the prompt.
+#setopt prompt_subst
+#
+## Config for prompt. PS1 synonym.
+#prompt='%2/ $(git_branch_name) > '
 #######################
 # Plugins             #
 #######################

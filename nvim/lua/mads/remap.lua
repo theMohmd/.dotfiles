@@ -32,7 +32,7 @@ vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]])
 vim.keymap.set({ "n", "v" }, "<leader>P", [["+P]])
 vim.keymap.set({ "n", "v" }, "<leader>d", [["+d]])
 
---deletion
+--deletion: default void delete
 --vim.keymap.set({"n", "v"}, "D" ,[[d]])
 --vim.keymap.set({"n", "v"}, "d" ,[["_d]])
 --vim.keymap.set({"n"}, "x" ,[["_x]])
@@ -41,7 +41,7 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["+d]])
 vim.keymap.set("n", "<leader>b", "<c-^>")
 
 --duplicate line
-vim.keymap.set("n", "<leader>l", "yyp")
+vim.keymap.set("n", "<leader>a", "yyp")
 
 --file explorer
 --vim.keymap.set("n", "<leader>e", function() vim.cmd('e .') end)
@@ -96,10 +96,11 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "J", "mzJ`z")
 
 --quick fix
-vim.keymap.set("n", "[[", vim.cmd.cn)
-vim.keymap.set("n", "]]", vim.cmd.cp)
-vim.keymap.set("n", "[]", vim.cmd.copen)
-vim.keymap.set("n", "][", vim.cmd.cclose)
+vim.keymap.set("n", "<leader>l", vim.cmd.cc)
+vim.keymap.set("n", "<leader>ll", vim.cmd.cn)
+vim.keymap.set("n", "<leader>lp", vim.cmd.cp)
+vim.keymap.set("n", "<leader>lo", vim.cmd.copen)
+vim.keymap.set("n", "<leader>lc", vim.cmd.cclose)
 
 --tab
 vim.keymap.set("n", "<leader>t", vim.cmd.tabn)
