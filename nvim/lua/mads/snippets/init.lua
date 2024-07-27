@@ -31,6 +31,7 @@ ls.add_snippets("typescriptreact", {
         "xc",--x component without props
         fmt(
             [[
+                "use client"
                 //{fileName} component{1}
                 const {fileName} = () => {{
                     return (
@@ -50,6 +51,7 @@ ls.add_snippets("typescriptreact", {
         "xcp",--x component with props
         fmt(
             [[
+                "use client"
                 //{fileName} component{4}
                 type {fileName}Props = {{
                     {1} : {2}
@@ -78,6 +80,9 @@ ls.add_snippets("typescriptreact", {
         t(")) //sleep"),
         i(0),
     }),
+    s( "xfile", {--fileName
+        f(get_file_name),
+    }),
     s( "t",
     {
         t("t(\""),
@@ -89,6 +94,12 @@ ls.add_snippets("typescriptreact", {
     }),
 })
 ls.add_snippets("typescript", {
+    s( "tclg", {--fileName
+        t("then(res=>{console.log(res);return res})"),
+    }),
+    s( "xfile", {--fileName
+        f(get_file_name),
+    }),
     s( "xget",--get api with axios
         fmt([[
         import axios from "axios";

@@ -66,10 +66,10 @@ if [ "$variant" = "t" ]; then
             "src/*": ["./src/*"],
             "api/*": ["./src/api/*"],
             "components/*": ["./src/components/*"],
-            "contexts/*": ["./src/contexts/*"]
+            "contexts/*": ["./src/contexts/*"],
             "hooks/*": ["./src/hooks/*"],
             "types/*": ["./src/types/*"],
-            "utils/*": ["./src/utils/*"],
+            "utils/*": ["./src/utils/*"]
         },
 
         /* Bundler mode */
@@ -96,8 +96,7 @@ return (
 <div>App</div>
 )
 }
-export default App" 
-> src/App.${variant}sx
+export default App" > src/App.${variant}sx
 
 echo 'import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
@@ -189,8 +188,7 @@ $var2
 return <>${var}</>;
 };
 
-export default Providers;"
-> src/contexts/Providers.${variant}sx
+export default Providers;" > src/contexts/Providers.${variant}sx
 
 git init
 git add .

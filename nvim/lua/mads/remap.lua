@@ -20,7 +20,7 @@ end)
 vim.keymap.set("n", "<leader><leader>", vim.cmd.w)
 
 --normal mode enter
-vim.keymap.set("n", "<cr>", [[i<cr><esc>]])
+vim.keymap.set("n", "<leader><cr>", [[i<cr><esc>]])
 
 --sudawrite
 vim.keymap.set("n", "<leader>W", function() vim.cmd('SudaWrite') end)
@@ -83,10 +83,7 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 --better end of line
---vim.keymap.set("n", "-", "$")
-
---dont ask
---vim.keymap.set("n", "Q", "<nop>")
+vim.keymap.set("n", ")", "$")
 
 --visual move line
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -103,13 +100,13 @@ vim.keymap.set("n", "<leader>lo", vim.cmd.copen)
 vim.keymap.set("n", "<leader>lc", vim.cmd.cclose)
 
 --tab
-vim.keymap.set("n", "<leader>t", vim.cmd.tabn)
+vim.keymap.set("n", "<leader>tc", vim.cmd.tabc)
+vim.keymap.set("n", "<leader>tn", vim.cmd.tabn)
+vim.keymap.set("n", "<leader>tp", vim.cmd.tabp)
 
-
---comment
-vim.keymap.set("n", "<leader>c", "I{/<esc>78a*<esc>a<cr><esc>o*<esc>77i*<esc>ea/}<esc>")
---vim.keymap.set("i", "<c-d>", "<cr><c-o>k<c-o>$")
-
---impor
-vim.keymap.set("n", "<leader>i", "ea<c-l><tab><esc>")
-
+--comment jsx
+--vim.keymap.set("n", "<leader>c", "I{/<esc>78a*<esc>a<cr><esc>o*<esc>77i*<esc>ea/}<esc>")
+vim.keymap.set("n", "<leader>cl", "I{/*<esc>77a*<esc>a<cr>  <esc>A */}<esc>")
+vim.keymap.set("n", "<leader>cd", "?{\\/\\*<cr>df:/\\*\\/}<cr>3x")
+vim.keymap.set("n", "<leader>cc", "I{/*todo: <esc>A *<esc>a/}<esc>")
+vim.keymap.set("v", "<leader>cc", "<c-v><s-v>\"ddO{/*todo:<esc>o*/}<esc>\"dP")

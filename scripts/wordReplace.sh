@@ -6,8 +6,4 @@ if [ "$#" -ne 2 ]; then
     exit 1
 fi
 
-# Assign arguments to variables
-foo="$1"
-bar="$2"
-
-find . -type f -exec sed -i "s/${foo}/${bar}/g" {} +
+find . -type f -exec sed -i "s/${1}/${2}/g" {} +

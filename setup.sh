@@ -104,9 +104,9 @@ if [[ "$answer" =~ ^[Yy]$ ]]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm 
 fi
 
-read -p "Do you want wordReplace? ($yes/$no): " answer
+read -p "Do you want scripts? ($yes/$no): " answer
     if [[ "$answer" =~ ^[Yy]$ ]]; then
-        sudo ln -s $HOME/.dotfiles/scripts/wordReplace.sh /usr/local/bin/wordReplace
+        sudo ln -s $HOME/.dotfiles/scripts/scripts.sh /usr/local/bin/x
     fi
 read -p "Do you want multiMove? ($yes/$no): " answer
     if [[ "$answer" =~ ^[Yy]$ ]]; then

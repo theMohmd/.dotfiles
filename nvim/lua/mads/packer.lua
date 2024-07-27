@@ -97,5 +97,12 @@ return require('packer').startup(function(use)
     use { 'jwalton512/vim-blade'}
     -- string/template converter
     use { 'axelvc/template-string.nvim'}
-end)
+    -- tailwind fold
+    use{
+      'razak17/tailwind-fold.nvim',
+      opts= {},
+      dependencies = { 'nvim-treesitter/nvim-treesitter' },
+      ft = { 'html', 'svelte', 'astro', 'vue', 'typescriptreact', 'php', 'blade' },
+    }
+  end)
 
