@@ -18,9 +18,10 @@ alias shut="shutdown now"
 alias pm="sudo pacman -S"
 alias dad="cd /run/media/DaDisk"
 #alias caps="setxkbmap -option caps:escape,shift:both_capslock &"
-alias caps="xmodmap -e 'keycode 9 = Caps_Lock' -e 'clear Lock' -e 'keycode 0x42 = Escape'"      
-alias myip="curl ipinfo.io"
+alias caps="xmodmap -e 'keycode 9 = Caps_Lock' -e 'clear Lock' -e 'keycode 0x42 = Escape'"
+alias myip="curl https://myip.wtf/json"
 alias hcd='cd && cd'
+alias minecraft='java -jar ~/Downloads/TLauncher.v10/TLauncher.jar'
 
 #############
 # Functions #
