@@ -3,7 +3,7 @@ require('lualine').setup {
         icons_enabled = true,
         theme = 'auto',
         component_separators = { left = '', right = ''},
-        section_separators = { left = '', right = ''},
+        section_separators = { left = '', right = ''},
         disabled_filetypes = {
             statusline = {},
             winbar = {},
@@ -21,13 +21,13 @@ require('lualine').setup {
     inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = {'filename'},
+        lualine_c = {'filename',color={fg="#ffffff"}},
         lualine_x = {'location'},
         lualine_y = {},
         lualine_z = {}
     },
     tabline = {
-        lualine_a = {'mode'},
+        lualine_a = {{'mode',color={fg="#ffffff"}}},
         lualine_b = {'branch', 'diff', 'diagnostics'},
         lualine_c = {'filename'},
         lualine_x = {{
@@ -36,7 +36,7 @@ require('lualine').setup {
             color = { fg = "#ff9e64" },
         }},
         lualine_y = {'tabs'},
-        lualine_z = {'location'}
+        lualine_z = {{'location',color={fg="#ffffff"}}}
     },
     winbar = {},
     inactive_winbar = {},
