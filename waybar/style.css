@@ -24,12 +24,10 @@ box.modules-left {
 #pulseaudio,
 #backlight,
 #network,
-#custom-right,
-box#window,
-#custom-left {
+box#window
+{
   padding:0px 10px;
   background: rgba(0,0,0,0.8);
-  margin:2px;
   border-radius:10px;
   opacity: 1;
   border: none;
@@ -81,3 +79,4 @@ tooltip {
   background: #555555;
   border: none;
 }
+/*------------------------------------------*/
