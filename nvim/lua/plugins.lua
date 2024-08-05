@@ -84,7 +84,8 @@ return {
   -- html tag rename
   {'AndrewRadev/tagalong.vim'},
   -- prettier
-  {'prettier/vim-prettier', build = ':!npm install --frozen-lockfile --production' },
+  --{'prettier/vim-prettier', build = ':!npm install --frozen-lockfile --production' },
+  {'sbdchd/neoformat'},
   -- commenting
   {'numToStr/Comment.nvim'},
   -- blade

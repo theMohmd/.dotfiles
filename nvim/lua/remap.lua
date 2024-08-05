@@ -63,8 +63,9 @@ vim.keymap.set("n", "<leader>sl", [[:s/\<<C-r><C-w>\>//gI<Left><Left><Left>]])
 
 --prettier and tailwind
 vim.keymap.set("n", "<leader>;", function()
-    vim.cmd('w')
-    vim.cmd('PrettierAsync')
+    --vim.cmd('w')
+    --vim.cmd('PrettierAsync')
+    vim.cmd('Neoformat')
 end)
 vim.keymap.set("n", "<leader>4", function()
 end)

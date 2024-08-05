@@ -14,6 +14,7 @@ require("neo-tree").setup({
     position = "right",
     mappings = {
       ['z'] = 'close_all_subnodes',
+      ['/'] = '',
     }
   },
   filesystem = {

@@ -19,7 +19,6 @@ box.modules-left {
 #battery,
 #temperature,
 #clock,
-#workspaces,
 #tray,
 #pulseaudio,
 #backlight,
@@ -45,20 +44,24 @@ box#window
 }
 
 tooltip {
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,1);
   color: @tool-color;
-  border-radius: 22px;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #11111b;
+  border-radius: 10px;
 }
 
+#workspaces{
+  background: rgba(0,0,0,0.8);
+  border-radius:10px;
+  opacity: 1;
+  border: none;
+  color:white;
+  padding:4px;
+}
 #workspaces button {
   box-shadow: none;
   text-shadow: none;
   padding: 4px;
   border-radius: 6px;
-  margin: 4px;
   color: #ffffff;
   animation: gradient_f 20s ease-in infinite;
   transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682);
@@ -67,10 +70,6 @@ tooltip {
 #workspaces button.active {
   background: #FFFFFF;
   color: #000000;
-  margin-left: 3px;
-  padding-left: 12px;
-  padding-right: 12px;
-  margin-right: 3px;
   animation: gradient_f 20s ease-in infinite;
   transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }

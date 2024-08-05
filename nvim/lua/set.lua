@@ -39,19 +39,6 @@ vim.opt.listchars = {
   precedes = '<',
 }
 ---------------------------------netrw
-
 vim.g.netrw_banner = 0
-vim.opt.clipboard:append("unnamedplus")
-vim.g.clipboard = {
-  name = 'wl-clipboard',
-  copy = {
-    ['+'] = 'wl-copy',
-    ['*'] = 'wl-copy',
-  },
-  paste = {
-    ['+'] = 'wl-paste --no-newline',
-    ['*'] = 'wl-paste --no-newline',
-  },
-  cache_enabled = 0,
-}
-
+--prettier
+vim.g.neoformat_try_node_exe = 1
