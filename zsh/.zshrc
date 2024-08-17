@@ -18,7 +18,7 @@ alias shut="shutdown now"
 alias pm="sudo pacman -S"
 alias dad="cd /run/media/DaDisk"
 #alias caps="setxkbmap -option caps:escape,shift:both_capslock &"
-alias caps="xmodmap -e 'keycode 9 = Caps_Lock' -e 'clear Lock' -e 'keycode 0x42 = Escape'"
+#alias caps="xmodmap -e 'keycode 9 = Caps_Lock' -e 'clear Lock' -e 'keycode 0x42 = Escape'"
 alias myip="curl https://myip.wtf/json"
 alias hcd='cd && cd'
 alias minecraft='java -jar ~/Downloads/TLauncher.v10/TLauncher.jar'
@@ -132,23 +132,7 @@ dir="%K{227}%F{black}%B  %c %b%f%k"
 PROMPT='
 %F{227}╭─%f$dir$(git_branch_name)$mode
 %F{227}╰─⏵%f '
-#######################
-#function git_branch_name()
-#{
-#  branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
-#  if [[ $branch == "" ]];
-#  then
-#    :
-#  else
-#    echo '- ('$branch')'
-#  fi
-#}
-#
-## Enable substitution in the prompt.
-#setopt prompt_subst
-#
-## Config for prompt. PS1 synonym.
-#prompt='%2/ $(git_branch_name) > '
+
 #######################
 # Plugins             #
 #######################
