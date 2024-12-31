@@ -12,12 +12,11 @@ vim.keymap.set("n", "<leader>0", function()
     vim.cmd('50 vsplit')
     vim.cmd('e ~/myNvimCheatSheat.txt')
 end)
+
 vim.keymap.set("n", "<leader>L", function()
     vim.cmd('tabnew')
     vim.cmd('e ~/.config/nvim')
 end)
---save
-vim.keymap.set("n", "<leader><leader>", vim.cmd.w)
 
 --normal mode enter
 vim.keymap.set("n", "<leader><cr>", [[i<cr><esc>]])
@@ -61,11 +60,44 @@ vim.keymap.set("n", "<leader>s", [[:%s//gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>sa", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gIc<Left><Left><Left><Left>]])
 vim.keymap.set("n", "<leader>sl", [[:s/\<<C-r><C-w>\>//gI<Left><Left><Left>]])
 
+--save
+vim.keymap.set("n", "<leader><leader>", function()
+  -- vim.lsp.buf.format()  -- Format the buffer
+  vim.cmd("w")          -- Save the file
+end )
+
+
 --prettier and tailwind
-vim.keymap.set("n", "<leader>;", function()
+-- vim.keymap.set("n", "<leader>;", vim.cmd("!npx prettier --write %"))
+--
+
+vim.keymap.set('n', '<leader>;', function()
+  vim.cmd('w')
+  vim.fn.jobstart('npx prettier --write ' .. vim.fn.expand('%'), {
+    stdout_buffered = true,
+    stderr_buffered = true,
+    on_exit = function(_, code)
+      if code == 0 then
+        print('Prettier: Format successful!')
+        vim.cmd('e')  -- Reload the file after successful formatting
+      else
+        print('Prettier: Format failed!')
+      end
+    end
+  })
+end, { noremap = true, silent = true })
+
+-- vim.keymap.set("n", "<leader>;", function()
+--     --vim.cmd('w')
+--     --vim.cmd('PrettierAsync')
+--     vim.cmd('Neoformat')
+--     vim.cmd('w')
+-- end)
+vim.keymap.set("n", "<leader>'", function()
     --vim.cmd('w')
-    --vim.cmd('PrettierAsync')
+    -- vim.cmd('PrettierAsync')
     vim.cmd('Neoformat')
+    vim.cmd('w')
 end)
 vim.keymap.set("n", "<leader>4", function()
 end)
@@ -108,6 +140,22 @@ vim.keymap.set("n", "<leader>tp", vim.cmd.tabp)
 --comment jsx
 --vim.keymap.set("n", "<leader>c", "I{/<esc>78a*<esc>a<cr><esc>o*<esc>77i*<esc>ea/}<esc>")
 vim.keymap.set("n", "<leader>cl", "I{/*<esc>77a*<esc>a<cr>  <esc>A */}<esc>")
-vim.keymap.set("n", "<leader>cd", "?{\\/\\*<cr>df:/\\*\\/}<cr>3x")
-vim.keymap.set("n", "<leader>cc", "I{/*todo: <esc>A *<esc>a/}<esc>")
-vim.keymap.set("v", "<leader>cc", "<c-v><s-v>\"ddO{/*todo:<esc>o*/}<esc>\"dP")
+vim.keymap.set("n", "<leader>cm", "I{/* <esc>A */}<esc>")
+vim.keymap.set("n", "<leader>cd", "?{\\/\\*<cr>df:/\\*\\/}<cr>5x")
+vim.keymap.set("n", "<leader>cc", "I{/* TODO : <esc>A *<esc>a/}<esc>")
+vim.keymap.set("v", "<leader>cc", "<c-v><s-v>\"ddO{/* TODO :<esc>o*/}<esc>\"dP")
+
+--fix width
+vim.keymap.set("n", "<leader>w",function() vim.cmd('vertical resize 40') end)
+
+--run bash
+vim.keymap.set("n", "<leader>r",function()
+  vim.cmd('!echo \"loading...\">res.json && bash % > res.json')
+end)
+
+vim.keymap.set("n", "<leader>e",function()
+  vim.cmd('cexpr system("tsc --noEmit")')
+  vim.cmd('copen')
+end)
+
+vim.keymap.set("v", "x", "<esc>ggVG")

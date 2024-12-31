@@ -79,7 +79,6 @@ if [[ "$answer" =~ ^[Yy]$ ]]; then
     else
         ln -s $HOME/.dotfiles/nvim $HOME/.config/nvim
     fi 
-    git clone --depth 1 https://github.com/wbthomason/packer.nvim\ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
     npm install -g rustywind
 fi
 

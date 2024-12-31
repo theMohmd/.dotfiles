@@ -40,5 +40,16 @@ vim.opt.listchars = {
 }
 ---------------------------------netrw
 vim.g.netrw_banner = 0
+
 --prettier
 vim.g.neoformat_try_node_exe = 1
+
+vim.g.neoformat_enabled_javascript = { 'prettier' }
+vim.g.neoformat_enabled_typescript = { 'prettier' }
+vim.g.neoformat_enabled_html = { 'prettier' }
+vim.g.neoformat_enabled_css = { 'prettier' }
+vim.g.neoformat_enabled_json = { 'prettier' }
+
+-- vim.g.neoformat_run_all_formatters = 1
+--
+vim.lsp.buf.format({ timeout_ms = 5000 })

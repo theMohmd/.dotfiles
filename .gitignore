@@ -1,7 +1,8 @@
 nvim/plugin
+nvim/lazy-lock.json
 zsh/plugin
+zsh/.zcompdump
 tmux/plugins
-mads.knsv
 hypr/wallpaper.jpg
 hypr/wallpaper2.jpg
 package-lock.json

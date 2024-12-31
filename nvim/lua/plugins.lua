@@ -82,7 +82,7 @@ return {
   {'rafamadriz/friendly-snippets'},
   {'saadparwaiz1/cmp_luasnip'},
   -- html tag rename
-  {'AndrewRadev/tagalong.vim'},
+  --{'AndrewRadev/tagalong.vim'},
   -- prettier
   --{'prettier/vim-prettier', build = ':!npm install --frozen-lockfile --production' },
   {'sbdchd/neoformat'},
@@ -99,5 +99,34 @@ return {
     ft = { 'html', 'svelte', 'astro', 'vue', 'typescriptreact', 'php', 'blade' },
   },
   -- transparent bg
-  {'xiyaowong/transparent.nvim'}
+  {'xiyaowong/transparent.nvim'},
+  { 'norcalli/nvim-colorizer.lua'},
+  {
+    "chentoast/marks.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
+  -- check workspace for errors
+  --{"artemave/workspace-diagnostics.nvim"},
+
+  --rest client
+  -- { 'mistweaverco/kulala.nvim', opts = {} },
+  {
+    "oysandvik94/curl.nvim",
+    cmd = { "CurlOpen" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = true,
+  },
+  {
+    "folke/trouble.nvim",
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    cmd = "Trouble",
+  },
+  -- {
+  --   "jose-elias-alvarez/null-ls.nvim",
+  --   dependencies = { "nvim-lua/plenary.nvim" },
+  -- }
+
 }

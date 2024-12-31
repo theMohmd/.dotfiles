@@ -20,9 +20,23 @@ alias dad="cd /run/media/DaDisk"
 #alias caps="setxkbmap -option caps:escape,shift:both_capslock &"
 alias caps="xmodmap -e 'keycode 9 = Caps_Lock' -e 'clear Lock' -e 'keycode 0x42 = Escape'"
 alias myip="curl https://myip.wtf/json"
-alias hcd='cd && cd'
+alias cdd='cd && cd'
 alias minecraft='java -jar ~/Downloads/TLauncher.v10/TLauncher.jar'
+alias nd="clear && npm run dev"
+#alias nb="npm run build"
+alias vpn="sudo openvpn --data-ciphers AES-128-CBC --config /etc/openvpn/client/XDE.ovpn --auth-user-pass /etc/openvpn/client/pass.txt"
 
+function nb() {
+  local word="todo.*build"
+  local command=$2
+
+  if rg -qi "$word"; then
+    echo "Found:"
+    rg -i "$word"  # Show the search results
+  else
+    npm run build
+  fi
+}
 #############
 # Functions #
 #############
@@ -107,7 +121,7 @@ function git_branch_name()
   then
     echo "%F{227}"
   else
-    echo "%F{227}%K{047}%k%f%F{black}%K{084}  $branch %k%f%F{047}"
+    echo "%F{227}%K{084}%k%f%F{black}%K{084}  $branch %k%f%F{084}"
   fi
 }
 

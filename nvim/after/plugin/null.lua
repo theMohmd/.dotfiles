@@ -1,0 +1,8 @@
+-- local null_ls = require("null-ls")
+-- null_ls.setup({
+--   sources = {
+--     null_ls.builtins.formatting.prettier, -- Add Prettier
+--     null_ls.builtins.formatting.eslint_d, -- Add ESLint format
+--     -- null_ls.builtins.diagnostics.eslint,  -- Add ESLint
+--   },
+-- })
