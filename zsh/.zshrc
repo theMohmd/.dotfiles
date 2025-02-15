@@ -25,6 +25,7 @@ alias minecraft='java -jar ~/Downloads/TLauncher.v10/TLauncher.jar'
 alias nd="clear && npm run dev"
 #alias nb="npm run build"
 alias vpn="sudo openvpn --data-ciphers AES-128-CBC --config /etc/openvpn/client/XDE.ovpn --auth-user-pass /etc/openvpn/client/pass.txt"
+alias gmd="git switch develop && git pull && git switch - && git merge develop"
 
 function nb() {
   local word="todo.*build"
@@ -34,7 +35,7 @@ function nb() {
     echo "Found:"
     rg -i "$word"  # Show the search results
   else
-    npm run build
+    npm run stage
   fi
 }
 #############

@@ -33,7 +33,7 @@ vim.opt.ignorecase = true
 
 vim.opt.list = true
 vim.opt.listchars = {
-  multispace = '---^',
+  multispace = ' .',
   trail = '~',
   extends = '>',
   precedes = '<',

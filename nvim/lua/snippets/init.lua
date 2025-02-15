@@ -28,12 +28,14 @@ local function get_file_name()
 end
 ls.add_snippets("typescriptreact", {
   s( "xsx", fmt("{{ xs:{1},md:{2} }}",{i(1),i(2)})),
+  s( "xbutton", fmt("<button onClick={{ ()=> console.log({1}) }}> todo build </button>",{i(1,"data")})),
   s( "xblack", t("sx={{backgroundColor:\"black\"}}")),
   s( "xfcolumn", t("flexDirection=\"column\"")),
   s( "xitemscenter", t("alignItems=\"center\"")),
   s( "xjustifycenter", t("justifyContent=\"center\"")),
   s( "xoverhidden", t("overflow=\"hidden\"")),
   s( "xflex", t("display=\"flex\"")),
+  s( "xbutton", fmt("<button onClick={{()=>console.log({1})}}> todo build </button>",{i(1)})),
   s( "xuc", fmt([["use client"
   ]],{})),
   s(
@@ -120,6 +122,33 @@ ls.add_snippets("typescriptreact", {
 })
 ls.add_snippets("typescript", {
 
+
+s("xuseget", 
+  fmt([[
+  import useGet, {{ TGetHookWrapperProps }} from "@/lib/hooks/useGet";
+  import {{ TApiRes }} from "@/lib/types/api.type";
+
+  type T{data}Params = never; // Record<"",string[]>
+  export default function {fileName}(
+  args: TGetHookWrapperProps<T{data}, T{data}Params> = {{}}
+  ) {{
+    args.queryOptions = {{
+      ...args.queryOptions,
+      // keepPreviousData: true,
+      // queryKey: queryKeys,
+    }};
+    return useGet<TApiRes<T{data}>, T{data}, T{data}Params>({{
+      endpoint: {endpoint},
+      ...(args as any),
+    }});
+  }}
+  ]], {
+    data = i(1, "DataType"),        -- Input placeholder for data type
+    fileName = f(get_file_name),   -- Dynamically set the file name
+    endpoint = i(2, '"api/endpoint"'), -- Input placeholder for endpoint
+    -- finish = i(0)                  -- Final jump point
+  }, { repeat_duplicates = true })
+),
   s( "clg", {--fileName
     t("console.log("),
     i(1),

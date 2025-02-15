@@ -1,0 +1,15 @@
+-- require("rest-nvim").setup({
+--   result = {
+--     formatters = {
+--       json = "jq" -- Use jq for JSON formatting
+--     },
+--   },
+-- })
+--
+-- -- Remap Enter only in .http files
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "http",
+--   callback = function()
+--     vim.api.nvim_buf_set_keymap(0, 'n', '<CR>', ':RestNvim<CR>', { noremap = true, silent = true })
+--   end
+-- })

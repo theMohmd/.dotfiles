@@ -69,23 +69,23 @@ end )
 
 --prettier and tailwind
 -- vim.keymap.set("n", "<leader>;", vim.cmd("!npx prettier --write %"))
---
 
-vim.keymap.set('n', '<leader>;', function()
-  vim.cmd('w')
-  vim.fn.jobstart('npx prettier --write ' .. vim.fn.expand('%'), {
-    stdout_buffered = true,
-    stderr_buffered = true,
-    on_exit = function(_, code)
-      if code == 0 then
-        print('Prettier: Format successful!')
-        vim.cmd('e')  -- Reload the file after successful formatting
-      else
-        print('Prettier: Format failed!')
-      end
-    end
-  })
-end, { noremap = true, silent = true })
+
+-- vim.keymap.set('n', '<leader>;', function()
+--   vim.cmd('w')
+--   vim.fn.jobstart('npx prettier --write ' .. vim.fn.expand('%'), {
+--     stdout_buffered = true,
+--     stderr_buffered = true,
+--     on_exit = function(_, code)
+--       if code == 0 then
+--         print('Prettier: Format successful!')
+--         vim.cmd('e')  -- Reload the file after successful formatting
+--       else
+--         print('Prettier: Format failed!')
+--       end
+--     end
+--   })
+-- end, { noremap = true, silent = true })
 
 -- vim.keymap.set("n", "<leader>;", function()
 --     --vim.cmd('w')

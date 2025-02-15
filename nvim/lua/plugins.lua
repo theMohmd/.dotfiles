@@ -1,4 +1,6 @@
 return {
+  --copilot
+  { 'github/copilot.vim'},
 
   -- hop between files
   {
@@ -7,14 +9,19 @@ return {
     dependencies = 'nvim-lua/plenary.nvim',
     build = ':!sudo pacman -S ripgrep'
   },
+
   -- hop faster between files
   {'theprimeagen/harpoon'},
+
   -- treesitter
   {'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
+
   -- undotree
   {'mbbill/undotree'},
+
   -- manage git
   {'tpope/vim-fugitive'},
+
   --lsp
   {
     'VonHeikemen/lsp-zero.nvim',
@@ -33,11 +40,13 @@ return {
       {'L3MON4D3/LuaSnip'},     -- Required
     },
   },
+
   --status line theme
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true },
   },
+
   --theme
   {'marko-cerovac/material.nvim'},
   {'eldritch-theme/eldritch.nvim'},
@@ -62,6 +71,7 @@ return {
       },
     },
   },
+
   -- better command ui
   {
     "folke/noice.nvim",
@@ -74,30 +84,45 @@ return {
       "rcarriga/nvim-notify",
     },
   },
+
   -- C-hjkl tab navigation
   {'christoomey/vim-tmux-navigator'},
+
   -- sudo read and write
   {'lambdalisue/suda.vim'},
+
   -- usefull snippets
   {'rafamadriz/friendly-snippets'},
   {'saadparwaiz1/cmp_luasnip'},
+
   -- html tag rename
   --{'AndrewRadev/tagalong.vim'},
+
   -- prettier
   --{'prettier/vim-prettier', build = ':!npm install --frozen-lockfile --production' },
+  {'MunifTanjim/prettier.nvim'},
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
   {'sbdchd/neoformat'},
+
   -- commenting
   {'numToStr/Comment.nvim'},
+
   -- blade
   { 'jwalton512/vim-blade'},
-  -- string/template converter
+
+  -- js string/template converter
   { 'axelvc/template-string.nvim'},
+
   -- tailwind fold
   {
     'razak17/tailwind-fold.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
     ft = { 'html', 'svelte', 'astro', 'vue', 'typescriptreact', 'php', 'blade' },
   },
+
   -- transparent bg
   {'xiyaowong/transparent.nvim'},
   { 'norcalli/nvim-colorizer.lua'},
@@ -106,27 +131,78 @@ return {
     event = "VeryLazy",
     opts = {},
   },
+
   -- check workspace for errors
   --{"artemave/workspace-diagnostics.nvim"},
 
   --rest client
+
   -- { 'mistweaverco/kulala.nvim', opts = {} },
+  -- { 'diepm/vim-rest-console' },
+  -- {
+  --   "oysandvik94/curl.nvim",
+  --   cmd = { "CurlOpen" },
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --   },
+  --   config = true,
+  -- },
   {
-    "oysandvik94/curl.nvim",
+    "theMohmd/curl.nvim",
     cmd = { "CurlOpen" },
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
     config = true,
   },
+  -- {
+  -- "rest-nvim/rest.nvim",
+  -- dependencies = {
+  --   "nvim-treesitter/nvim-treesitter",
+  --   opts = function (_, opts)
+  --     opts.ensure_installed = opts.ensure_installed or {}
+  --     table.insert(opts.ensure_installed, "http")
+  --   end,
+  -- }
+  {
+    "jellydn/hurl.nvim",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      -- Optional, for markdown rendering with render-markdown.nvim
+      -- {
+      --   'MeanderingProgrammer/render-markdown.nvim',
+      --   opts = {
+      --     file_types = { "markdown" },
+      --   },
+      ft = { "markdown" },
+    },
+  },
   {
     "folke/trouble.nvim",
     opts = {}, -- for default options, refer to the configuration section for custom setup.
     cmd = "Trouble",
   },
+  -- -- postman like rest client
   -- {
-  --   "jose-elias-alvarez/null-ls.nvim",
-  --   dependencies = { "nvim-lua/plenary.nvim" },
-  -- }
+  --   "NachoNievaG/atac.nvim",
+  --   dependencies = { "akinsho/toggleterm.nvim" },
+  --   config = function()
+  --     require("atac").setup({
+  --       dir = "~/my/work/directory", -- By default, the dir will be set as /tmp/atac
+  --     })
+  --   end,
+  -- },
 
+  -- ai completion
+  {
+    "monkoose/neocodeium",
+    event = "VeryLazy",
+    config = function()
+      local neocodeium = require("neocodeium")
+      neocodeium.setup()
+      vim.keymap.set("i", "<A-;>", neocodeium.accept)
+    end,
+  }
 }

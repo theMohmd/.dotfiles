@@ -5,5 +5,6 @@ require("set")
 require("commands")
 require("snippets")
 require("scripts")
+require("macros")
 
 
