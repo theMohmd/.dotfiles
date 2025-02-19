@@ -24,7 +24,7 @@ alias cdd='cd && cd'
 alias minecraft='java -jar ~/Downloads/TLauncher.v10/TLauncher.jar'
 alias nd="clear && npm run dev"
 #alias nb="npm run build"
-alias vpn="sudo openvpn --data-ciphers AES-128-CBC --config /etc/openvpn/client/XDE.ovpn --auth-user-pass /etc/openvpn/client/pass.txt"
+alias vpn="sudo openvpn --data-ciphers AES-128-CBC --config /etc/openvpn/client/vpn.ovpn --auth-user-pass /etc/openvpn/client/pass.txt"
 alias gmd="git switch develop && git pull && git switch - && git merge develop"
 
 function nb() {

@@ -14,7 +14,7 @@
   "hererocks": { "branch": "master", "commit": "c9c5444dea1e07e005484014a8231aa667be30b6" },
   "hurl.nvim": { "branch": "main", "commit": "438360f62e73e8d149f0374d9d1d75c1441807e3" },
   "image.nvim": { "branch": "master", "commit": "f1163cc2f6fff5b0de7c23c7502eee0df23a3e0e" },
-  "lazy.nvim": { "branch": "main", "commit": "72aa3a2624be5dc240646084f7b6a38eb99eb2ce" },
+  "lazy.nvim": { "branch": "main", "commit": "7e6c863bc7563efbdd757a310d17ebc95166cef3" },
   "lsp-zero.nvim": { "branch": "v2.x", "commit": "9a686513eaaa13d737d0fec8956a18268ead8b29" },
   "lspsaga.nvim": { "branch": "main", "commit": "5fce15331ac6c3a3ec3ac91ab0e85ed82f5cbba0" },
   "lualine.nvim": { "branch": "master", "commit": "2a5bae925481f999263d6f5ed8361baef8df4f83" },

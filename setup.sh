@@ -140,13 +140,11 @@ if [[ "$answer" =~ ^[Yy]$ ]]; then
         ln -s $HOME/.dotfiles/nvim $HOME/.config/nvim
     fi 
     npm install -g rustywind
-=======
 read -p "Do you want scripts? [Y/n]: " answer
 if [[ ! "$answer" =~ ^[Nn]$ ]]; then
   sudo ln -s $HOME/.dotfiles/scripts/scripts.sh /usr/local/bin/x
   sudo ln -s $HOME/.dotfiles/scripts/multiMove.sh /usr/local/bin/multiMove
   sudo ln -s $HOME/.dotfiles/scripts/nextCleanUp.sh /usr/local/bin/nextCleanUp
   sudo ln -s $HOME/.dotfiles/scripts/cleanreact.sh /usr/local/bin/cleanreact
->>>>>>> bcfbd8d2a145ad9217d5cc6e786a1a9c70e8cbee
 fi
 

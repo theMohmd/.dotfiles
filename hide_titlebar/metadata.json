@@ -1,0 +1,9 @@
+{
+    "name": "Hide Titlebar in Fullscreen",
+    "description": "Removes titlebar when a window goes fullscreen",
+    "author": "Mads",
+    "version": "1.0",
+    "license": "GPL",
+    "category": "Appearance",
+    "enabled": true
+}
