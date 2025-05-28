@@ -22,6 +22,14 @@ return {
   -- manage git
   {'tpope/vim-fugitive'},
 
+  {
+    "kdheepak/lazygit.nvim",
+    cmd = "LazyGit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
+
   --lsp
   {
     'VonHeikemen/lsp-zero.nvim',
@@ -37,7 +45,13 @@ return {
       {'hrsh7th/nvim-cmp'},     -- Required
       {'hrsh7th/cmp-buffer'},   -- for buffer suggestion
       {'hrsh7th/cmp-nvim-lsp'}, -- Required
-      {'L3MON4D3/LuaSnip'},     -- Required
+      -- {'L3MON4D3/LuaSnip'},     -- Required
+
+      {
+        "L3MON4D3/LuaSnip",
+        -- install jsregexp (optional!).
+        build = "make install_jsregexp"
+      }
     },
   },
 
@@ -102,7 +116,8 @@ return {
   --{'prettier/vim-prettier', build = ':!npm install --frozen-lockfile --production' },
   {'MunifTanjim/prettier.nvim'},
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    --   "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
   },
   {'sbdchd/neoformat'},
@@ -131,22 +146,18 @@ return {
     event = "VeryLazy",
     opts = {},
   },
+  --indent guide
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    ---@module "ibl"
+    ---@type ibl.config
+  },
 
   -- check workspace for errors
   --{"artemave/workspace-diagnostics.nvim"},
 
   --rest client
-
-  -- { 'mistweaverco/kulala.nvim', opts = {} },
-  -- { 'diepm/vim-rest-console' },
-  -- {
-  --   "oysandvik94/curl.nvim",
-  --   cmd = { "CurlOpen" },
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --   },
-  --   config = true,
-  -- },
   {
     "theMohmd/curl.nvim",
     cmd = { "CurlOpen" },
@@ -155,27 +166,12 @@ return {
     },
     config = true,
   },
-  -- {
-  -- "rest-nvim/rest.nvim",
-  -- dependencies = {
-  --   "nvim-treesitter/nvim-treesitter",
-  --   opts = function (_, opts)
-  --     opts.ensure_installed = opts.ensure_installed or {}
-  --     table.insert(opts.ensure_installed, "http")
-  --   end,
-  -- }
   {
     "jellydn/hurl.nvim",
     dependencies = {
       "MunifTanjim/nui.nvim",
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
-      -- Optional, for markdown rendering with render-markdown.nvim
-      -- {
-      --   'MeanderingProgrammer/render-markdown.nvim',
-      --   opts = {
-      --     file_types = { "markdown" },
-      --   },
       ft = { "markdown" },
     },
   },
@@ -184,17 +180,6 @@ return {
     opts = {}, -- for default options, refer to the configuration section for custom setup.
     cmd = "Trouble",
   },
-  -- -- postman like rest client
-  -- {
-  --   "NachoNievaG/atac.nvim",
-  --   dependencies = { "akinsho/toggleterm.nvim" },
-  --   config = function()
-  --     require("atac").setup({
-  --       dir = "~/my/work/directory", -- By default, the dir will be set as /tmp/atac
-  --     })
-  --   end,
-  -- },
-
   -- ai completion
   {
     "monkoose/neocodeium",
@@ -204,5 +189,26 @@ return {
       neocodeium.setup()
       vim.keymap.set("i", "<A-;>", neocodeium.accept)
     end,
+  },
+
+  --bidi for persian
+  { "mcookly/bidi.nvim" },
+
+  --typing practice
+  {
+    "nvzone/typr",
+    dependencies = "nvzone/volt",
+    opts = {},
+    cmd = { "Typr", "TyprStats" },
+  },
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {},
   }
+
 }

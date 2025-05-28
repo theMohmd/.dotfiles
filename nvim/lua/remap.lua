@@ -55,16 +55,18 @@ vim.keymap.set("n", "<leader>q", vim.cmd.q)
 vim.keymap.set("n", "<leader>o", "o<esc>")
 vim.keymap.set("n", "<leader>O", "O<esc>")
 
+
 --replace word
 vim.keymap.set("n", "<leader>s", [[:%s//gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>sa", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gIc<Left><Left><Left><Left>]])
 vim.keymap.set("n", "<leader>sl", [[:s/\<<C-r><C-w>\>//gI<Left><Left><Left>]])
 
 --save
-vim.keymap.set("n", "<leader><leader>", function()
-  -- vim.lsp.buf.format()  -- Format the buffer
-  vim.cmd("w")          -- Save the file
-end )
+vim.keymap.set("n", "<leader><leader>", vim.cmd.w)
+-- vim.keymap.set("n", "<leader><leader>", function()
+--   -- vim.lsp.buf.format()  -- Format the buffer
+--   vim.cmd("w")          -- Save the file
+-- end )
 
 
 --prettier and tailwind
@@ -93,15 +95,14 @@ end )
 --     vim.cmd('Neoformat')
 --     vim.cmd('w')
 -- end)
-vim.keymap.set("n", "<leader>'", function()
+vim.keymap.set("n", "<leader>:", function()
     --vim.cmd('w')
     -- vim.cmd('PrettierAsync')
     vim.cmd('Neoformat')
     vim.cmd('w')
 end)
-vim.keymap.set("n", "<leader>4", function()
-end)
-vim.keymap.set("n", "<leader>:", [[:w<cr>:silent !rustywind --write %<cr>]])
+
+-- vim.keymap.set("n", "<leader>:", [[:w<cr>:silent !rustywind --write %<cr>]])
 
 --move in insert mode
 vim.keymap.set("i", "<A-l>", "<C-o>l")
@@ -117,10 +118,11 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 --better end of line
 vim.keymap.set("n", ")", "$")
+vim.keymap.set("v", ")", "$")
 
 --visual move line
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 
 --append line below to this line
 vim.keymap.set("n", "J", "mzJ`z")
@@ -132,10 +134,10 @@ vim.keymap.set("n", "<leader>lp", vim.cmd.cp)
 vim.keymap.set("n", "<leader>lo", vim.cmd.copen)
 vim.keymap.set("n", "<leader>lc", vim.cmd.cclose)
 
---tab
-vim.keymap.set("n", "<leader>tc", vim.cmd.tabc)
-vim.keymap.set("n", "<leader>tn", vim.cmd.tabn)
-vim.keymap.set("n", "<leader>tp", vim.cmd.tabp)
+-- --tab
+-- vim.keymap.set("n", "<leader>tc", vim.cmd.tabc)
+-- vim.keymap.set("n", "<leader>tn", vim.cmd.tabn)
+-- vim.keymap.set("n", "<leader>tp", vim.cmd.tabp)
 
 --comment jsx
 --vim.keymap.set("n", "<leader>c", "I{/<esc>78a*<esc>a<cr><esc>o*<esc>77i*<esc>ea/}<esc>")
@@ -146,7 +148,14 @@ vim.keymap.set("n", "<leader>cc", "I{/* TODO : <esc>A *<esc>a/}<esc>")
 vim.keymap.set("v", "<leader>cc", "<c-v><s-v>\"ddO{/* TODO :<esc>o*/}<esc>\"dP")
 
 --fix width
-vim.keymap.set("n", "<leader>w",function() vim.cmd('vertical resize 40') end)
+vim.keymap.set("n", "<leader>w", function()
+  local size = vim.v.count -- Get the number before <leader>w
+  if size > 0 then
+    vim.cmd("vertical resize " .. size)
+  else
+    vim.cmd("vertical resize 40") -- Default width if no number is provided
+  end
+end, { silent = true })
 
 --run bash
 vim.keymap.set("n", "<leader>r",function()

@@ -69,7 +69,7 @@ if [[ ! "$answer" =~ ^[Nn]$ ]]; then
 
   install pacman kitty
 
-  install pacman keyd "sudo systemctl enable keyd sudo systemctl start keyd"
+  # install pacman keyd "sudo systemctl enable keyd sudo systemctl start keyd"
 
   install pacman npm
 
@@ -78,6 +78,8 @@ if [[ ! "$answer" =~ ^[Nn]$ ]]; then
   install pacman wl-clipboard
 
   install yay ttf-jetbrains-mono-nerd
+
+  install pacman flameshot
 fi
 
 #linking process
@@ -89,62 +91,59 @@ linkFn "tmux" "$HOME/.config/tmux" "git clone https://github.com/tmux-plugins/tp
 linkFn "nvim" "$HOME/.config/nvim" "sudo npm i -g rustywind"
 linkFn "keyd" "/etc/keyd" "sudo keyd reload"
 
-<<<<<<< HEAD
-        if [[ "$answer" =~ ^[Dd]$ ]]; then
-            rm -f $HOME/.xprofile
-            ln -s $HOME/.dotfiles/x/.xprofile $HOME/.xprofile
-
-        elif [[ "$answer" =~ ^[Bb]$ ]]; then
-            mv $HOME/.xprofile $HOME/.xprofile.bak 
-            ln -s $HOME/.dotfiles/x/.xprofile $HOME/.xprofile
-        fi
-    else
-        ln -s $HOME/.dotfiles/x/.xprofile $HOME/.xprofile
-    fi 
-fi
 linkFn(){
-    read -p "Do you want $1 config? ($yes/$no): " answer
-    if [[ "$answer" =~ ^[Yy]$ ]]; then
-        if [ -d "$HOME/.config/$2" ]; then
-            read -p "What do you want to do with the existing config? ($backup/$cancel/$delete): " answer
+  read -p "Do you want $1 config? ($yes/$no): " answer
+  if [[ "$answer" =~ ^[Yy]$ ]]; then
+    if [ -d "$HOME/.config/$2" ]; then
+      read -p "What do you want to do with the existing config? ($backup/$cancel/$delete): " answer
 
-            if [[ "$answer" =~ ^[Dd]$ ]]; then
-                rm -rf $HOME/.config/$2
-                ln -s $HOME/.dotfiles/$2 $HOME/.config/$2
+      if [[ "$answer" =~ ^[Dd]$ ]]; then
+        rm -rf $HOME/.config/$2
+        ln -s $HOME/.dotfiles/$2 $HOME/.config/$2
 
-            elif [[ "$answer" =~ ^[Bb]$ ]]; then
-                mv $HOME/.config/$2 $HOME/.config/$2.bak
-                ln -s $HOME/.dotfiles/$2 $HOME/.config/$2
-            fi
-        else
-            ln -s $HOME/.dotfiles/$2 $HOME/.config/$2
-        fi 
+      elif [[ "$answer" =~ ^[Bb]$ ]]; then
+        mv $HOME/.config/$2 $HOME/.config/$2.bak
+        ln -s $HOME/.dotfiles/$2 $HOME/.config/$2
+      fi
+    else
+      ln -s $HOME/.dotfiles/$2 $HOME/.config/$2
     fi
+  fi
 }
 
-#neovim
-read -p "Do you want neovim config? ($yes/$no): " answer
-if [[ "$answer" =~ ^[Yy]$ ]]; then
-    if [ -d "$HOME/.config/nvim" ]; then
-        read -p "What do you want to do with the existing config? ($backup/$cancel/$delete): " answer
+# #neovim
+# read -p "Do you want neovim config? ($yes/$no): " answer
+# if [[ "$answer" =~ ^[Yy]$ ]]; then
+#   if [ -d "$HOME/.config/nvim" ]; then
+#     read -p "What do you want to do with the existing config? ($backup/$cancel/$delete): " answer
+#
+#     if [[ "$answer" =~ ^[Dd]$ ]]; then
+#       rm -rf $HOME/.config/nvim
+#       ln -s $HOME/.dotfiles/nvim $HOME/.config/nvim
+#
+#     elif [[ "$answer" =~ ^[Bb]$ ]]; then
+#       mv $HOME/.config/nvim $HOME/.config/nvim.bak
+#       ln -s $HOME/.dotfiles/nvim $HOME/.config/nvim
+#     fi
+#   else
+#     ln -s $HOME/.dotfiles/nvim $HOME/.config/nvim
+#   fi 
+#   npm install -g rustywind
 
-        if [[ "$answer" =~ ^[Dd]$ ]]; then
-            rm -rf $HOME/.config/nvim
-            ln -s $HOME/.dotfiles/nvim $HOME/.config/nvim
-
-        elif [[ "$answer" =~ ^[Bb]$ ]]; then
-            mv $HOME/.config/nvim $HOME/.config/nvim.bak
-            ln -s $HOME/.dotfiles/nvim $HOME/.config/nvim
-        fi
-    else
-        ln -s $HOME/.dotfiles/nvim $HOME/.config/nvim
-    fi 
-    npm install -g rustywind
-read -p "Do you want scripts? [Y/n]: " answer
+read -p "Do you want x scripts? [Y/n]: " answer
 if [[ ! "$answer" =~ ^[Nn]$ ]]; then
-  sudo ln -s $HOME/.dotfiles/scripts/scripts.sh /usr/local/bin/x
-  sudo ln -s $HOME/.dotfiles/scripts/multiMove.sh /usr/local/bin/multiMove
-  sudo ln -s $HOME/.dotfiles/scripts/nextCleanUp.sh /usr/local/bin/nextCleanUp
-  sudo ln -s $HOME/.dotfiles/scripts/cleanreact.sh /usr/local/bin/cleanreact
+  sudo ln -s $HOME/.dotfiles/scripts/x-scripts.sh /usr/local/bin/x
+fi
+
+read -p "Do you want grub theme? ($yes/$no): " answer
+if [[ "$answer" =~ ^[Yy]$ ]]; then
+  sudo ln -sf $HOME/.dotfiles/grub/crt-amber-theme /boot/grub/themes
+  echo "GRUB_THEME=\"/boot/grub/themes/crt-amber-theme/theme.txt\"" | sudo tee -a /etc/default/grub > /dev/null
+  sudo grub-mkconfig -o /boot/grub/grub.cfg
+fi
+
+read -p "Do you want splash screen? ($yes/$no): " answer
+if [[ "$answer" =~ ^[Yy]$ ]]; then
+  sudo ln -sf $HOME/.dotfiles/splash_screen/* /usr/share/plasma/look-and-feel/
 fi
 

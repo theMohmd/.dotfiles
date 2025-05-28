@@ -1,0 +1,27 @@
+local utils = require("scripts.utils")
+
+local function propMaker(input)
+  local fields = {}
+
+  -- Split the input string by commas to extract each field
+  for field in input:gmatch("([%w%d_]+),?") do
+    table.insert(fields, field)
+  end
+
+  -- Build the result string with field names and types
+  local result = "{\n"
+  for _, field in ipairs(fields) do
+    result = result .. "  " .. field .. ": string;\n"
+  end
+  result = result .. "}"
+
+  -- Combine the fields and return the formatted string
+  return "{" .. table.concat(fields, ", ") .. "}: " .. result
+end
+
+local function propMakerWrapper()
+  print(propMaker(utils.get_selected_text()))
+  return
+end
+
+vim.api.nvim_create_user_command("PropMaker", propMakerWrapper, {range = true})

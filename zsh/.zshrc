@@ -10,7 +10,7 @@ export LANG=en_US.UTF-8
 ###########
 # Aliases #
 ###########
- 
+
 alias zrc="$EDITOR $ZODTDIT/.zshrc"
 alias ll='ls -lah'
 alias zsource="source $ZDOTDIR/.zshrc"
@@ -23,9 +23,47 @@ alias myip="curl https://myip.wtf/json"
 alias cdd='cd && cd'
 alias minecraft='java -jar ~/Downloads/TLauncher.v10/TLauncher.jar'
 alias nd="clear && npm run dev"
+alias bd="clear && bun run dev"
 #alias nb="npm run build"
 alias vpn="sudo openvpn --data-ciphers AES-128-CBC --config /etc/openvpn/client/vpn.ovpn --auth-user-pass /etc/openvpn/client/pass.txt"
+alias bitmaxwire="sudo wg-quick up /etc/wireguard/wireguard.conf"
+alias bitmaxwiredown="sudo wg-quick down /etc/wireguard/wireguard.conf"
+
 alias gmd="git switch develop && git pull && git switch - && git merge develop"
+alias prett="bunx prettier --write ."
+alias shadd="bunx --bun shadcn@latest add"
+
+function ssha() {
+  # Check if agent is running and env vars are set and valid
+  if [ -z "$SSH_AGENT_PID" ] || ! ps -p $SSH_AGENT_PID > /dev/null 2>&1; then
+    eval "$(ssh-agent -s)"
+  else
+    # Check if SSH_AUTH_SOCK exists and is a socket
+    if [ ! -S "$SSH_AUTH_SOCK" ]; then
+      eval "$(ssh-agent -s)"
+    fi
+  fi
+
+  ssh-add ~/.ssh/mateo-gh
+  ssh-add ~/.ssh/gh
+  ssh-add ~/.ssh/bitmax
+}
+
+functions app() {
+  local a=${1:-}
+  local b=${2:-}
+
+  local host="app${a}.local"
+  local port="300${b}"
+
+  [[ -z "$b" ]] && port="300${a}"
+  [[ -z "$a" && -z "$b" ]] && host="app.local" && port="3000"
+
+  local url="http://${host}:${port}"
+
+  echo "Launching: $url"
+  google-chrome-stable --app="$url"
+}
 
 function nb() {
   local word="todo.*build"
@@ -38,25 +76,38 @@ function nb() {
     npm run stage
   fi
 }
+
+function bb() {
+  local word="todo.*build"
+  local command=$2
+
+  if rg -qi "$word"; then
+    echo "Found:"
+    rg -i "$word"  # Show the search results
+  else
+    bun run stage
+  fi
+}
+ 
 #############
 # Functions #
 #############
- 
+
 zPlug()
 {
-    index=$(expr index "$1" "/")
-    plug_name="${1:$index}"
+  index=$(expr index "$1" "/")
+  plug_name="${1:$index}"
 
-    if [[ ! -d $ZDOTDIR/plugin/$plug_name ]]; then
-        git clone https://github.com/$1 $ZDOTDIR/plugin/$plug_name
-    fi
-    if [[ -n $2 ]]; then
-        
-        source $ZDOTDIR/plugin/$plug_name/$2
-    else
-        source $ZDOTDIR/plugin/$plug_name/$plug_name.zsh
-       
-    fi
+  if [[ ! -d $ZDOTDIR/plugin/$plug_name ]]; then
+    git clone https://github.com/$1 $ZDOTDIR/plugin/$plug_name
+  fi
+  if [[ -n $2 ]]; then
+
+    source $ZDOTDIR/plugin/$plug_name/$2
+  else
+    source $ZDOTDIR/plugin/$plug_name/$plug_name.zsh
+
+  fi
 }
 
 ##########################
@@ -129,15 +180,15 @@ function git_branch_name()
 # show vim mode
 mode=""
 function zle-line-init zle-keymap-select {
-    mode="" #prev background
-    if [[ $KEYMAP == 'vicmd' ]]; then
-        mode+="%K{197}%k%f%F{black}%B%K{197} N %f%b%k%F{197}%f"
-    elif [[ $KEYMAP == 'main' ]]; then
-        mode+="%K{69}%k%f%F{black}%B%K{69} I %f%b%k%F{69}%f"
-    else
-        mode+="[$KEYMAP]"
-    fi
-    zle reset-prompt
+mode="" #prev background
+if [[ $KEYMAP == 'vicmd' ]]; then
+  mode+="%K{197}%k%f%F{black}%B%K{197} N %f%b%k%F{197}%f"
+elif [[ $KEYMAP == 'main' ]]; then
+  mode+="%K{69}%k%f%F{black}%B%K{69} I %f%b%k%F{69}%f"
+else
+  mode+="[$KEYMAP]"
+fi
+zle reset-prompt
 }
 zle -N zle-line-init
 zle -N zle-keymap-select
@@ -158,3 +209,6 @@ zPlug "zsh-users/zsh-history-substring-search"
 zPlug "zsh-users/zsh-completions" "zsh-completions.plugin.zsh"
 #zPlug "MichaelAquilina/zsh-auto-notify" "auto-notify.plugin.zsh"
 #zPlug "romkatv/powerlevel10k" "powerlevel10k.zsh-theme"
+
+# Turso
+export PATH="$PATH:/home/mads/.turso"

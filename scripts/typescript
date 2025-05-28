@@ -1,28 +1,0 @@
-Script started on 2024-12-16 10:30:54+03:30 [TERM="tmux-256color" TTY="/dev/pts/17" COLUMNS="214" LINES="82"]
-[1m[7m%[27m[1m[0m                                                                                                                                                                                                                      [0m[27m[24m[J
-[38;5;227m╭─[39m[48;5;227m[30m[1m[30m[48;5;227m  scripts [0m[30m[48;5;227m[39m[49m[38;5;227m[48;5;84m[49m[39m[30m[48;5;84m  main [49m[39m[38;5;84m
-[38;5;227m╰─⏵[39m [KMM[0m[27m[24m[J
-[38;5;227m╭─[39m[48;5;227m[30m[1m[30m[48;5;227m  scripts [0m[30m[48;5;227m[39m[49m[38;5;227m[48;5;84m[49m[39m[30m[48;5;84m  main [49m[39m[38;5;84m[48;5;69m[49m[39m[30m[1m[30m[48;5;69m I [39m[0m[48;5;69m[49m[38;5;69m[39m
-[38;5;227m╰─⏵[39m [K[?2004hl[1m[31ml[0m[39m[1m[31ml[1m[31ml[0m[39m[0m[32ml[0m[32ml[39m[?2004l
-total 52K
-drwxr-xr-x  3 mads mads 4.0K Dec 16 10:30 .
-drwxr-xr-x 13 mads mads 4.0K Aug  5 13:45 ..
--rwxr-xr-x  1 mads mads 4.3K May 25  2024 cleanreact.sh
--rwxr-xr-x  2 mads mads   57 Aug  8 15:55 init.sh
--rwxr-xr-x  1 mads mads  410 May 19  2024 multiMove.sh
--rwxr-xr-x  1 mads mads  258 May 17  2024 nextCleanUp.sh
--rwxr-xr-x  1 mads mads 1.8K Aug  1 00:44 prox.sh
--rw-r--r--  1 mads mads   12 May 17  2024 react.sh
--rw-r--r--  1 mads mads 1.2K Dec 16 10:26 release.sh
--rwxr-xr-x  1 mads mads 1.9K Dec 16 10:30 scripts.sh
-drwxr-xr-x  3 mads mads 4.0K May 23  2024 test
--rw-r--r--  1 mads mads    0 Dec 16 10:30 typescript
--rwxr-xr-x  1 mads mads  182 May 23  2024 wordReplace.sh
-[1m[7m%[27m[1m[0m                                                                                                                                                                                                                      [0m[27m[24m[J
-[38;5;227m╭─[39m[48;5;227m[30m[1m[30m[48;5;227m  scripts [0m[30m[48;5;227m[39m[49m[38;5;227m[48;5;84m[49m[39m[30m[48;5;84m  main [49m[39m[38;5;84m[48;5;69m[49m[39m[30m[1m[30m[48;5;69m I [39m[0m[48;5;69m[49m[38;5;69m[39m
-[38;5;227m╰─⏵[39m [KMM[0m[27m[24m[J
-[38;5;227m╭─[39m[48;5;227m[30m[1m[30m[48;5;227m  scripts [0m[30m[48;5;227m[39m[49m[38;5;227m[48;5;84m[49m[39m[30m[48;5;84m  main [49m[39m[38;5;84m[48;5;69m[49m[39m[30m[1m[30m[48;5;69m I [39m[0m[48;5;69m[49m[38;5;69m[39m
-[38;5;227m╰─⏵[39m [K[?2004hMM[0m[27m[24m[J
-[38;5;227m╭─[39m[48;5;227m[30m[1m[30m[48;5;227m  scripts [0m[30m[48;5;227m[39m[49m[38;5;227m[48;5;84m[49m[39m[30m[48;5;84m  main [49m[39m[38;5;84m[48;5;69m[49m[39m[30m[1m[30m[48;5;69m I [39m[0m[48;5;69m[49m[38;5;69m[39m
-[38;5;227m╰─⏵[39m 
-Script done on 2024-12-16 17:09:28+03:30 [COMMAND_EXIT_CODE="0"]

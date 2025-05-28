@@ -1,12 +1,14 @@
 [Activities][LastVirtualDesktop]
-e7f3d3ba-aa66-4b96-960a-816c5a87d0e1=e5a3d9f0-da37-4ff2-a0da-61b7a53e7280
+e7f3d3ba-aa66-4b96-960a-816c5a87d0e1=9a4ed073-b073-4c58-9727-6230978e5f6c
 
 [Desktops]
 Id_1=9a4ed073-b073-4c58-9727-6230978e5f6c
 Id_2=89756ad8-2626-476c-8990-635b182f62eb
-Id_3=e5a3d9f0-da37-4ff2-a0da-61b7a53e7280
-Id_4=242c1d40-9d4e-489d-ba13-22e1371cd4dc
-Id_5=e83794bd-d3ec-464a-89f7-e4d81788faaa
+Id_3=242c1d40-9d4e-489d-ba13-22e1371cd4dc
+Id_4=e83794bd-d3ec-464a-89f7-e4d81788faaa
+Id_5=dfbd5e41-1ed1-496c-bd4f-0a6c4fd90c01
+Name_3=Desktop 4
+Name_4=Desktop 5
 Number=5
 Rows=1
 
@@ -19,7 +21,43 @@ truely-maximizedEnabled=true
 [Tiling]
 padding=4
 
+[Tiling][067a16eb-10dd-58f8-adaa-07af96db2758]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][099ee334-7df7-58cd-b404-8a42c3fddd5e]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][0ae69338-84ee-5dce-bd94-9bde328fd786]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][2c451299-448d-543d-bc90-29587c47c533]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][419d4e8d-a9f1-5991-8567-f485759f9b98]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][495824af-9271-5853-80e2-065548403212]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][4ed33f92-ce01-5025-9b91-f75e9967d2ef]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][70f45187-b575-5396-add6-f8ab53eed424]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][74fe5f70-188f-57c4-ac93-cc8b97fce489]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][892d9657-38cb-5a7f-8ed5-7d2399cbb33e]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
 [Tiling][a5c7a2f0-ef88-57d1-8db4-abfcbc95fc36]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][b5290310-d669-5782-8622-25471812be9f]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][e8749369-2b04-50ca-bfaa-742abd8bd8ef]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][f6a9a9d8-3899-5c9d-9f0f-d69b52996dfc]
@@ -28,11 +66,7 @@ tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"wi
 [Windows]
 BorderlessMaximizedWindows=true
 FocusPolicy=FocusFollowsMouse
-NextFocusPrefersMouse=true
-
-[Xwayland]
-Scale=1
 
 [org.kde.kdecoration2]
 ButtonsOnLeft=XAI
-ButtonsOnRight=HS
+ButtonsOnRight=HSF

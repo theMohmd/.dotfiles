@@ -5,7 +5,7 @@ require('lualine').setup {
     theme = {
       normal = { c = { bg = 'NONE' } },
       inactive = { c = { bg = 'NONE' } },
-    },,
+    },
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {

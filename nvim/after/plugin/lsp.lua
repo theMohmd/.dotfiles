@@ -3,13 +3,25 @@ local lsp = require("lsp-zero")
 lsp.preset("recommended")
 
 lsp.ensure_installed({
-    'typescript-language-server',
     'jsonls',
     'eslint',
     'tailwindcss',
     'emmet_language_server'
 })
 
+lsp.configure("tailwindcss", {
+  settings = {
+    tailwindCSS = {
+      classAttributes = { "class", "className", "/.*ClassName$/" }, -- Enables suggestions for any variable ending in "ClassName"
+      experimental = {
+        classRegex = {
+          { '([%w_]-ClassName)%s*=%s*"([^"]*)"', "class" }, -- For "headerClassName = 'text-red-500'"
+          { '([%w_]-ClassName)%s*=%s*`([^`]*)`', "class" }, -- For `const headerClassName = `text-red-500``
+        },
+      },
+    },
+  },
+})
 
 -- Fix Undefined global 'vim'
 
