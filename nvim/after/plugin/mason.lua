@@ -1,4 +1,5 @@
-require("mason").setup({
+local lsp =require("mason")
+lsp.setup({
 
     ui = {
         ---@since 1.0.0
@@ -69,4 +70,16 @@ require("mason").setup({
             toggle_help = "g?",
         },
     },
+})
+
+-- Use mason-lspconfig to ensure servers are installed
+require("mason").setup()
+require("mason-lspconfig").setup({
+    ensure_installed = {
+        'jsonls',
+        'eslint',
+        'tailwindcss',
+        'emmet_language_server'
+    },
+    automatic_installation = true,
 })

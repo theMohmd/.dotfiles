@@ -135,6 +135,21 @@ if [[ ! "$answer" =~ ^[Nn]$ ]]; then
   sudo ln -s $HOME/.dotfiles/scripts/x-scripts.sh /usr/local/bin/x
 fi
 
+read -p "Do you want tm script (tmux sessionizer)? [Y/n]: " answer
+if [[ ! "$answer" =~ ^[Nn]$ ]]; then
+  sudo ln -s $HOME/.dotfiles/scripts/tm.sh /usr/local/bin/ts
+fi
+
+read -p "Do you want vpn script ? [Y/n]: " answer
+if [[ ! "$answer" =~ ^[Nn]$ ]]; then
+  sudo ln -s $HOME/.dotfiles/scripts/vpn.sh /usr/local/bin/vpn
+fi
+
+read -p "Do you want nd script (custom npm run dev)? [Y/n]: " answer
+if [[ ! "$answer" =~ ^[Nn]$ ]]; then
+  sudo ln -s $HOME/.dotfiles/scripts/nd.sh /usr/local/bin/nd
+fi
+
 read -p "Do you want grub theme? ($yes/$no): " answer
 if [[ "$answer" =~ ^[Yy]$ ]]; then
   sudo ln -sf $HOME/.dotfiles/grub/crt-amber-theme /boot/grub/themes

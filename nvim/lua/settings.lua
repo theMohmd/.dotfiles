@@ -52,7 +52,9 @@ vim.g.neoformat_enabled_css = { 'prettier' }
 vim.g.neoformat_enabled_json = { 'prettier' }
 
 -- vim.g.neoformat_run_all_formatters = 1
---
-vim.lsp.buf.format({ timeout_ms = 5000 })
-
 vim.opt.termbidi = true
+
+--fold
+vim.o.foldmethod = "indent" -- or "indent"
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true

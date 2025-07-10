@@ -27,4 +27,6 @@ local builtin = require('telescope.builtin')
     end
   end
   vim.keymap.set('n', '<leader>F', conditional_telescope, {})
-  vim.keymap.set('n', '<leader>f', function() builtin.find_files() end, {})
+  vim.keymap.set('n', '<leader>f', function() builtin.find_files({
+  file_ignore_patterns = { "^%.git/" }
+}) end, {})

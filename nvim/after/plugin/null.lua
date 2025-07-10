@@ -4,6 +4,7 @@ null_ls.setup({
   sources = {
     null_ls.builtins.formatting.prettier,
   },
+  timeout = 10000,
 
 
   on_attach = function(client, bufnr)
@@ -15,7 +16,7 @@ null_ls.setup({
       --   end,
       -- })
 
-      vim.keymap.set("n", "<Leader>;", function()
+      vim.keymap.set("n", "<Leader>:", function()
         vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
         vim.cmd("w")
       end, { buffer = bufnr, desc = "[lsp] format" })

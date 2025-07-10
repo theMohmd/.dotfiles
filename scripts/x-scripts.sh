@@ -6,6 +6,7 @@ source ~/.dotfiles/scripts/x-scripts/mrn.sh
 source ~/.dotfiles/scripts/x-scripts/fr.sh
 source ~/.dotfiles/scripts/x-scripts/release.sh
 source ~/.dotfiles/scripts/x-scripts/nct.sh
+source ~/.dotfiles/scripts/x-scripts/icons.sh
 
 # Define a function to display the menu
 function display_menu() {
@@ -17,6 +18,7 @@ function display_menu() {
   echo "5. git flow release push(rp)"
   echo "6. next component tree(nct)"
   echo "7. avif"
+  echo "8. icons"
 }
 
 # Define a function to handle the menu selection
@@ -30,6 +32,7 @@ function handle_menu_selection() {
     5) rp ;;
     6) nct ;;
     7) avif ;;
+    8) icons ;;
     *) echo "Invalid selection" ;;
   esac
 }

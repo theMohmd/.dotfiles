@@ -5,12 +5,12 @@ vim.keymap.set("n", "<leader>0", function()
     while (vim.fn.winnr() ~= 1) do
         vim.cmd('wincmd h')
     end
-    if (vim.fn.bufname() == '/home/mads/myNvimCheatSheat.txt') then
+    if (vim.fn.bufname() == '/home/mads/note.md') then
         vim.cmd('close')
         return
     end
-    vim.cmd('50 vsplit')
-    vim.cmd('e ~/myNvimCheatSheat.txt')
+    vim.cmd('100 vsplit')
+    vim.cmd('e ~/note.md')
 end)
 
 vim.keymap.set("n", "<leader>L", function()
@@ -22,7 +22,7 @@ end)
 vim.keymap.set("n", "<leader><cr>", [[i<cr><esc>]])
 
 --sudawrite
-vim.keymap.set("n", "<leader>W", function() vim.cmd('SudaWrite') end)
+-- vim.keymap.set("n", "<leader>W", function() vim.cmd('SudaWrite') end)
 
 --clipboard
 vim.keymap.set({ "n", "v" }, "<leader>Y", [["+Y]])
@@ -95,7 +95,7 @@ vim.keymap.set("n", "<leader><leader>", vim.cmd.w)
 --     vim.cmd('Neoformat')
 --     vim.cmd('w')
 -- end)
-vim.keymap.set("n", "<leader>:", function()
+vim.keymap.set("n", "<leader>;", function()
     --vim.cmd('w')
     -- vim.cmd('PrettierAsync')
     vim.cmd('Neoformat')
@@ -135,7 +135,7 @@ vim.keymap.set("n", "<leader>lo", vim.cmd.copen)
 vim.keymap.set("n", "<leader>lc", vim.cmd.cclose)
 
 -- --tab
--- vim.keymap.set("n", "<leader>tc", vim.cmd.tabc)
+vim.keymap.set("n", "<leader>tc", vim.cmd.tabc)
 -- vim.keymap.set("n", "<leader>tn", vim.cmd.tabn)
 -- vim.keymap.set("n", "<leader>tp", vim.cmd.tabp)
 
@@ -148,6 +148,15 @@ vim.keymap.set("n", "<leader>cc", "I{/* TODO : <esc>A *<esc>a/}<esc>")
 vim.keymap.set("v", "<leader>cc", "<c-v><s-v>\"ddO{/* TODO :<esc>o*/}<esc>\"dP")
 
 --fix width
+vim.keymap.set("n", "<leader>W", function()
+  local size = vim.v.count -- Get the number before <leader>w
+  if size > 0 then
+    vim.cmd("vertical resize " .. size)
+  else
+    vim.cmd("vertical resize 100") -- Default width if no number is provided
+  end
+end, { silent = true })
+
 vim.keymap.set("n", "<leader>w", function()
   local size = vim.v.count -- Get the number before <leader>w
   if size > 0 then
@@ -156,6 +165,24 @@ vim.keymap.set("n", "<leader>w", function()
     vim.cmd("vertical resize 40") -- Default width if no number is provided
   end
 end, { silent = true })
+
+vim.keymap.set("n", "<leader>wj", function()
+  local map = vim.keymap.set
+  local del = vim.keymap.del
+
+  map("n", "k", ":vertical resize +5<CR>", { buffer = true })
+  map("n", "j", ":vertical resize -5<CR>", { buffer = true })
+
+  vim.notify("Resize mode: j ←, k → (Esc to exit)")
+
+  -- exit mode with Esc
+  map("n", "<Esc>", function()
+    del("n", "j", { buffer = true })
+    del("n", "k", { buffer = true })
+    del("n", "<Esc>", { buffer = true })
+    vim.notify("Resize mode exited")
+  end, { buffer = true })
+end)
 
 --run bash
 vim.keymap.set("n", "<leader>r",function()
@@ -167,4 +194,5 @@ vim.keymap.set("n", "<leader>e",function()
   vim.cmd('copen')
 end)
 
-vim.keymap.set("v", "x", "<esc>ggVG")
+-- vim.keymap.set("v", "x", "<esc>ggVG")
+vim.keymap.set({"n","v"}, "<leader>A", "<esc>ggVG")

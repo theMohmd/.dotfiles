@@ -1,6 +1,6 @@
 require("remap")
 require("_lazy")
-require("set")
+require("settings")
 require("commands")
 require("snippets")
 require("scripts")

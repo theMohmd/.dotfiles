@@ -22,73 +22,18 @@ alias dad="cd /run/media/DaDisk"
 alias myip="curl https://myip.wtf/json"
 alias cdd='cd && cd'
 alias minecraft='java -jar ~/Downloads/TLauncher.v10/TLauncher.jar'
-alias nd="clear && npm run dev"
+# alias nd=""
 alias bd="clear && bun run dev"
+alias nopen
 #alias nb="npm run build"
-alias vpn="sudo openvpn --data-ciphers AES-128-CBC --config /etc/openvpn/client/vpn.ovpn --auth-user-pass /etc/openvpn/client/pass.txt"
+# alias vpn="sudo openvpn --data-ciphers AES-128-CBC --config /etc/openvpn/client/vpn.ovpn --auth-user-pass /etc/openvpn/client/pass.txt"
 alias bitmaxwire="sudo wg-quick up /etc/wireguard/wireguard.conf"
 alias bitmaxwiredown="sudo wg-quick down /etc/wireguard/wireguard.conf"
 
 alias gmd="git switch develop && git pull && git switch - && git merge develop"
 alias prett="bunx prettier --write ."
-alias shadd="bunx --bun shadcn@latest add"
+alias shadd="pnpm dlx shadcn@latest add"
 
-function ssha() {
-  # Check if agent is running and env vars are set and valid
-  if [ -z "$SSH_AGENT_PID" ] || ! ps -p $SSH_AGENT_PID > /dev/null 2>&1; then
-    eval "$(ssh-agent -s)"
-  else
-    # Check if SSH_AUTH_SOCK exists and is a socket
-    if [ ! -S "$SSH_AUTH_SOCK" ]; then
-      eval "$(ssh-agent -s)"
-    fi
-  fi
-
-  ssh-add ~/.ssh/mateo-gh
-  ssh-add ~/.ssh/gh
-  ssh-add ~/.ssh/bitmax
-}
-
-functions app() {
-  local a=${1:-}
-  local b=${2:-}
-
-  local host="app${a}.local"
-  local port="300${b}"
-
-  [[ -z "$b" ]] && port="300${a}"
-  [[ -z "$a" && -z "$b" ]] && host="app.local" && port="3000"
-
-  local url="http://${host}:${port}"
-
-  echo "Launching: $url"
-  google-chrome-stable --app="$url"
-}
-
-function nb() {
-  local word="todo.*build"
-  local command=$2
-
-  if rg -qi "$word"; then
-    echo "Found:"
-    rg -i "$word"  # Show the search results
-  else
-    npm run stage
-  fi
-}
-
-function bb() {
-  local word="todo.*build"
-  local command=$2
-
-  if rg -qi "$word"; then
-    echo "Found:"
-    rg -i "$word"  # Show the search results
-  else
-    bun run stage
-  fi
-}
- 
 #############
 # Functions #
 #############
@@ -109,6 +54,75 @@ zPlug()
 
   fi
 }
+
+tpn() {
+  tmux new-session \; send-keys 'vpn' C-m
+}
+
+function nopen() {
+  local port=${1:-3000}
+  ssh -R 80:localhost:$port nokey@localhost.run
+}
+
+# function nd() {
+#   local a=${1:-}
+#   local b=${2:-}
+#
+#   local host="app${a}.local"
+#   local port="300${b}"
+#
+#   [[ -z "$b" ]] && port="300${a}"
+#   [[ -z "$a" && -z "$b" ]] && host="app.local" && port="3000"
+#
+#   local url="http://${host}:${port}"
+#
+#   clear && npm run dev -- -p "$port"
+#   google-chrome-stable "$url"
+# }
+
+function nb() {
+  local word="todo b"
+  local command=$2
+
+  if rg -qi "$word"; then
+    echo "Found:"
+    rg -i "$word"  # Show the search results
+  else
+    pnpm run stage
+  fi
+}
+
+function bb() {
+  local word="todo.*build"
+  local command=$2
+
+  if rg -qi "$word"; then
+    echo "Found:"
+    rg -i "$word"  # Show the search results
+  else
+    bun run stage
+  fi
+}
+
+function ssha() {
+  # Check if agent is running and env vars are set and valid
+  if [ -z "$SSH_AGENT_PID" ] || ! ps -p $SSH_AGENT_PID > /dev/null 2>&1; then
+    eval "$(ssh-agent -s)" > /dev/null 2>&1
+  else
+    if [ ! -S "$SSH_AUTH_SOCK" ]; then
+      eval "$(ssh-agent -s)" > /dev/null 2>&1
+    fi
+  fi
+
+  ssh-add -q ~/.ssh/gh
+  ssh-add -q ~/.ssh/mateo-gh
+  ssh-add -q ~/.ssh/bitmax
+  ssh-add -q ~/.ssh/mateo
+  ssh-add -q ~/.ssh/bitium
+  ssh-add -q ~/.ssh/bitium-old
+  ssh-add -q ~/.ssh/wolf
+}
+
 
 ##########################
 # Keybind mode for shell #
@@ -180,15 +194,15 @@ function git_branch_name()
 # show vim mode
 mode=""
 function zle-line-init zle-keymap-select {
-mode="" #prev background
-if [[ $KEYMAP == 'vicmd' ]]; then
-  mode+="%K{197}%k%f%F{black}%B%K{197} N %f%b%k%F{197}%f"
-elif [[ $KEYMAP == 'main' ]]; then
-  mode+="%K{69}%k%f%F{black}%B%K{69} I %f%b%k%F{69}%f"
-else
-  mode+="[$KEYMAP]"
-fi
-zle reset-prompt
+  mode="" #prev background
+  if [[ $KEYMAP == 'vicmd' ]]; then
+    mode+="%K{197}%k%f%F{black}%B%K{197} N %f%b%k%F{197}%f"
+  elif [[ $KEYMAP == 'main' ]]; then
+    mode+="%K{69}%k%f%F{black}%B%K{69} I %f%b%k%F{69}%f"
+  else
+    mode+="[$KEYMAP]"
+  fi
+  zle reset-prompt
 }
 zle -N zle-line-init
 zle -N zle-keymap-select
@@ -210,5 +224,13 @@ zPlug "zsh-users/zsh-completions" "zsh-completions.plugin.zsh"
 #zPlug "MichaelAquilina/zsh-auto-notify" "auto-notify.plugin.zsh"
 #zPlug "romkatv/powerlevel10k" "powerlevel10k.zsh-theme"
 
+#######################
+# Init                #
+#######################
+
 # Turso
 export PATH="$PATH:/home/mads/.turso"
+
+export FZF_DEFAULT_OPTS="--bind=ctrl-j:down,ctrl-k:up"
+
+ssha

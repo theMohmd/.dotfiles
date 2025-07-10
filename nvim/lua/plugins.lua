@@ -1,6 +1,6 @@
 return {
   --copilot
-  { 'github/copilot.vim'},
+  -- { 'github/copilot.vim'},
 
   -- hop between files
   {
@@ -43,6 +43,7 @@ return {
 
       -- Autocompletion
       {'hrsh7th/nvim-cmp'},     -- Required
+      {'onsails/lspkind-nvim'},     -- Required
       {'hrsh7th/cmp-buffer'},   -- for buffer suggestion
       {'hrsh7th/cmp-nvim-lsp'}, -- Required
       -- {'L3MON4D3/LuaSnip'},     -- Required
@@ -131,6 +132,18 @@ return {
   -- js string/template converter
   { 'axelvc/template-string.nvim'},
 
+  -- tailwind-tools.lua
+ {
+    "luckasRanarison/tailwind-tools.nvim",
+    name = "tailwind-tools",
+    build = ":UpdateRemotePlugins",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-telescope/telescope.nvim", -- optional
+      "neovim/nvim-lspconfig", -- optional
+    },
+    opts = {} -- your configuration
+  },
   -- tailwind fold
   {
     'razak17/tailwind-fold.nvim',
@@ -166,49 +179,49 @@ return {
     },
     config = true,
   },
-  {
-    "jellydn/hurl.nvim",
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      ft = { "markdown" },
-    },
-  },
-  {
-    "folke/trouble.nvim",
-    opts = {}, -- for default options, refer to the configuration section for custom setup.
-    cmd = "Trouble",
-  },
-  -- ai completion
-  {
-    "monkoose/neocodeium",
-    event = "VeryLazy",
-    config = function()
-      local neocodeium = require("neocodeium")
-      neocodeium.setup()
-      vim.keymap.set("i", "<A-;>", neocodeium.accept)
-    end,
-  },
+  -- {
+    --   "jellydn/hurl.nvim",
+    --   dependencies = {
+      --     "MunifTanjim/nui.nvim",
+      --     "nvim-lua/plenary.nvim",
+      --     "nvim-treesitter/nvim-treesitter",
+      --     ft = { "markdown" },
+      --   },
+      -- },
+      {
+        "folke/trouble.nvim",
+        opts = {}, -- for default options, refer to the configuration section for custom setup.
+        cmd = "Trouble",
+      },
+      -- ai completion
+      {
+        "monkoose/neocodeium",
+        event = "VeryLazy",
+        config = function()
+          local neocodeium = require("neocodeium")
+          neocodeium.setup()
+          vim.keymap.set("i", "<A-;>", neocodeium.accept)
+        end,
+      },
 
-  --bidi for persian
-  { "mcookly/bidi.nvim" },
+      --bidi for persian
+      { "mcookly/bidi.nvim" },
 
-  --typing practice
-  {
-    "nvzone/typr",
-    dependencies = "nvzone/volt",
-    opts = {},
-    cmd = { "Typr", "TyprStats" },
-  },
-  {
-    'MeanderingProgrammer/render-markdown.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-    ---@module 'render-markdown'
-    ---@type render.md.UserConfig
-    opts = {},
-  }
+      --typing practice
+      {
+        "nvzone/typr",
+        dependencies = "nvzone/volt",
+        opts = {},
+        cmd = { "Typr", "TyprStats" },
+      },
+      {
+        'MeanderingProgrammer/render-markdown.nvim',
+        dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+        -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+        -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+        ---@module 'render-markdown'
+        ---@type render.md.UserConfig
+        opts = {},
+      }
 
-}
+    }

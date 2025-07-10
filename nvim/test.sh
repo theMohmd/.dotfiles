@@ -1,1 +1,0 @@
-curl cheat.sh/curl
