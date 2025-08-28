@@ -22,6 +22,13 @@ ls.add_snippets("typescript", {
     i(0),
   }),
 
+  s("$", {
+    t("${"), i(1),t("}")
+  }),
+  s("`", {
+    t("`${"), i(1),t("}`")
+  }),
+
   s("xwuseget",
   fmt([[
   import useGet, {{ TGetHookWrapperProps }} from "@/lib/hooks/useGet";

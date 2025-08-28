@@ -133,7 +133,7 @@ return {
   { 'axelvc/template-string.nvim'},
 
   -- tailwind-tools.lua
- {
+  {
     "luckasRanarison/tailwind-tools.nvim",
     name = "tailwind-tools",
     build = ":UpdateRemotePlugins",
@@ -222,6 +222,7 @@ return {
         ---@module 'render-markdown'
         ---@type render.md.UserConfig
         opts = {},
-      }
+      },
 
+      {"kwkarlwang/bufjump.nvim"},
     }

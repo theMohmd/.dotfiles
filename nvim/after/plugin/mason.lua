@@ -1,5 +1,5 @@
-local lsp =require("mason")
-lsp.setup({
+local mason = require("mason")
+mason.setup({
 
     ui = {
         ---@since 1.0.0
@@ -73,7 +73,6 @@ lsp.setup({
 })
 
 -- Use mason-lspconfig to ensure servers are installed
-require("mason").setup()
 require("mason-lspconfig").setup({
     ensure_installed = {
         'jsonls',

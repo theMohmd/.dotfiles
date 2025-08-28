@@ -38,6 +38,11 @@ alias shadd="pnpm dlx shadcn@latest add"
 # Functions #
 #############
 
+resolv(){
+ sudo cat "1.1.1.1
+  8.8.8.8" >/etc/resolv.conf
+}
+
 zPlug()
 {
   index=$(expr index "$1" "/")
@@ -80,15 +85,36 @@ function nopen() {
 #   google-chrome-stable "$url"
 # }
 
-function nb() {
-  local word="todo b"
-  local command=$2
+# direnv
+function direnvsetup(){
+  eval "$(direnv hook zsh)"
 
+  export PATH="/nix/var/nix/profiles/default/bin:$HOME/.nix-profile/bin:$PATH"
+}
+
+function nb() {
+  echo "Checking build blocks..."
+  local word="todo bb"
   if rg -qi "$word"; then
     echo "Found:"
-    rg -i "$word"  # Show the search results
+    rg -i "$word"
   else
-    pnpm run stage
+    echo "Running type check..."
+    if pnpm exec tsc --noEmit; then
+      echo ""
+      echo -n "Ready to build. Press Enter to continue or any other key to abort: "
+      read -n 1 response
+      echo "" # Add newline after input
+      
+      if [[ -z "$response" ]]; then
+        echo "Building..."
+        pnpm run stage
+      else
+        echo "Build aborted."
+      fi
+    else
+      echo "Type check failed. Aborting."
+    fi
   fi
 }
 
@@ -223,6 +249,11 @@ zPlug "zsh-users/zsh-history-substring-search"
 zPlug "zsh-users/zsh-completions" "zsh-completions.plugin.zsh"
 #zPlug "MichaelAquilina/zsh-auto-notify" "auto-notify.plugin.zsh"
 #zPlug "romkatv/powerlevel10k" "powerlevel10k.zsh-theme"
+
+#######################
+# General             #
+#######################
+
 
 #######################
 # Init                #

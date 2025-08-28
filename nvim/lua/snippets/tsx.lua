@@ -11,7 +11,44 @@ local utils = require("snippets/utils")
 ls.filetype_extend("typescriptreact", { "typescript" })
 
 ls.add_snippets("typescriptreact", {
-  -- Array creation helper
+  s("xcontext",
+  fmt([[
+"use client";
+
+import {{ createContext, useContext, useState, ReactNode }} from "react";
+
+type AppContextType = {{
+	state: number;
+	setState: React.Dispatch<React.SetStateAction<number>>;
+}};
+
+const AppContext = createContext<AppContextType | undefined>(undefined);
+
+export function {filename}({{ children }}: {{ children: ReactNode }}) {{
+	const [state, setState] = useState(0);
+
+	return <AppContext.Provider value={{{{ state, setState }}}}>{{children}}</AppContext.Provider>;
+}}
+
+export function useAppContext() {{
+	const context = useContext(AppContext);
+	if (!context) {{
+		throw new Error("useAppContext must be used within AppProvider");
+	}}
+	return context;
+}}
+  ]],{
+    filename = f(utils.get_file_name)
+  })
+  ),
+  s("xskelkey", t("key={`skeleton-${i}`}")),
+  s("xcontrol", {
+    t("const { control } = useFormContext"),
+    i(1),
+    t("<"),
+    i(2),
+    t(">();"),
+  }),
   s("xarr", {
     t("Array.from({ length: "),
     i(1, "3"),
@@ -19,6 +56,23 @@ ls.add_snippets("typescriptreact", {
     i(0),
     t(")"),
   }),
+
+  s("xformcontext",
+    fmt([[const {{ control }} = useFormContext{1}<{2}>();]],
+    {
+      i(1),
+      i(2),
+    },{ repeat_duplicates = true })
+  ),
+
+  s("usewatch",
+    fmt([[const {name} = useWatch{1}({{ control, name:"{name}" }});
+    ]],
+    {
+      i(1),
+      name = i(2),
+    },{ repeat_duplicates = true })
+  ),
 
   -- API hook pattern
   s("useget",
@@ -47,7 +101,7 @@ ls.add_snippets("typescriptreact", {
   s("xuc", t({ "\"use client\"", "" })),
 
   -- Development helpers
-  s("xbutton", fmt("<button type=\"button\" onClick={{()=> console.log({1})}}> todo build </button>", { i(1, "data") })),
+  s("xbutton", fmt("<button type=\"button\" onClick={{ ()=> console.log(\"milog\",{1}) }}> todo bb </button>", { i(1, "data") })),
   s("xborder", t("border=\"1px solid red\"")),
 
   -- Page component (using folder name)

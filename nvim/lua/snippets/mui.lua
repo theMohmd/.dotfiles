@@ -17,6 +17,7 @@ ls.add_snippets("typescriptreact", {
   s("mbutton", fmt("<Button{1}>{2}</Button>",{i(1),i(2)})),
   
   -- Flexbox utilities
+  s("mfcenter", t("display=\"flex\" justifyContent=\"center\" alignItems=\"center\"")),
   s("mflex", t("display=\"flex\"")),
   s("mflexcolumn", t("flexDirection=\"column\"")),
   s("mflexrow", t("flexDirection=\"row\"")),
@@ -96,11 +97,14 @@ ls.add_snippets("typescriptreact", {
   s("mr2", t("marginRight=\"16px\"")),
   
   -- Padding utilities
-  s("mp0", t("padding=\"0\"")),
-  s("mp1", t("padding=\"8px\"")),
-  s("mp2", t("padding=\"16px\"")),
-  s("mp3", t("padding=\"24px\"")),
-  s("mp4", t("padding=\"32px\"")),
+  s("mp0", t("p={0}")),
+  s("mp1", t("p={1}")),
+  s("mp2", t("p={2}")),
+  s("mp3", t("p={3}")),
+  s("mp4", t("p={4}")),
+  s("mp5", t("p={5}")),
+  s("mp6", t("p={6}")),
+  s("mp7", t("p={7}")),
   s("mpx0", t("paddingX=\"0\"")),
   s("mpx1", t("paddingX=\"8px\"")),
   s("mpx2", t("paddingX=\"16px\"")),

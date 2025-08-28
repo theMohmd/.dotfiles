@@ -1,5 +1,5 @@
 [Activities][LastVirtualDesktop]
-e7f3d3ba-aa66-4b96-960a-816c5a87d0e1=89756ad8-2626-476c-8990-635b182f62eb
+e7f3d3ba-aa66-4b96-960a-816c5a87d0e1=9a4ed073-b073-4c58-9727-6230978e5f6c
 
 [Desktops]
 Id_1=9a4ed073-b073-4c58-9727-6230978e5f6c
@@ -29,6 +29,9 @@ tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"wi
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][2c451299-448d-543d-bc90-29587c47c533]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][3ea8b6f8-bc0e-5288-94d3-43ec9047c054]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][419d4e8d-a9f1-5991-8567-f485759f9b98]

@@ -3,6 +3,7 @@ require("snippets/git")
 require("snippets/ts")
 require("snippets/tsx")
 require("snippets/lua")
+require("snippets/json")
 
 local utils = require("snippets/utils")
 local ls = require("luasnip")
@@ -16,6 +17,8 @@ local f = ls.function_node
 local c = ls.choice_node
 local d = ls.dynamic_node
 local r = ls.restore_node
+
+ls.snippets = {}
 
 -- Universal snippets
 ls.add_snippets("all", {
